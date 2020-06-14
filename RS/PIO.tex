@@ -1816,11 +1816,11 @@
 
 \section{Kakav je odnos refaktorisanja i pisanja programskog koda?}
   Refaktorisanje je tehnika kojom se kod popravlja u smislu dizajna kako bi kod bio razumljiviji, 
-  lakši za održavanje i kako bi se povećala efikasnot pisanja koda. 
+  lakši za održavanje i kako bi se povećala efikasnost pisanja koda. 
   Kada je kod dobro struktuiran onda je lako prepoznati šta treba izmeniti i kako
-  unetu tu izmenu. \\
+  uneti tu izmenu. \\
   \indent Imamo delove koda koji su nekako povezani, a refaktorisanjem menjamo način kako su povezani,
-  a da se pritom ponašanje programe ne menja (menje se struktura). Refaktorisanje ne menja
+  a da se pritom ponašanje programa ne menja (menja se struktura). Refaktorisanje ne menja
   ponašanje programa, već samo strukturu.\\
   \indent Pisanje novog koda ne treba da menja postojeći kod već samo da dodaje novo ponašanje. 
   Programiranje se sastoji iz naizmeničnog refaktorisanja i pisanja novog koda.
@@ -1830,7 +1830,7 @@
   \begin{itemize}
     \item Softver postaje razumljiviji;
     \item Refaktorisanje pomaže u traženju grešaka;
-    \item Refaktorisanje podiže brzinu pisanja koda.
+    \item Refaktorisanje poboljšava brzinu pisanja novog koda, pa samim tim i ukupno vreme pisanja
   \end{itemize}
 
 \section{Kada se pristupa refaktorisanju koda?}
@@ -1910,7 +1910,7 @@
   \noindent \textbf{Rešenje:} 
   \begin{itemize}
     \item Izvlačenje metoda (deo koda se izvlači u zasebnu funkciju/metod).
-    \item Povlačenje metoda kroz hijearhiju (dve klase imaju imaju iste atribute, ti atributi
+    \item Povlačenje metoda kroz hijearhiju (dve klase imaju iste atribute, ti atributi
           mogu biti izdvojeni u natklasu).
     \item Pravljenje šablonskih metoda (izdvajaju se delovi nekog algoritma u natklasu).
     \item Zamena algoritma.
@@ -1926,13 +1926,13 @@
   (eng. Long Method)\\
   \textbf{Simptomi:}
   \begin{itemize}
-    \item Metod je predugačak. Za svaki metod koji je duži od deset linije je potrebno
+    \item Metod je predugačak. Za svaki metod koji je duži od deset linija potrebno je
           razmisliti od refaktorisanju.
   \end{itemize}
 
   \noindent \textbf{Uzrok:} 
   \begin{itemize}
-    \item Konstatno dodavanje koda (dve po dve linije).
+    \item Konstantno dodavanje koda (dve po dve linije).
   \end{itemize}
 
   \noindent \textbf{Rešenje:} 
@@ -1991,7 +1991,7 @@
 
   \noindent \textbf{Uzrok:} 
   \begin{itemize}
-    \item Loša struktura programa ili ,,copypasta programming``.
+    \item Loša struktura programa ili ,,copy-paste programming``.
   \end{itemize}
 
   \noindent \textbf{Rešenje:} 
@@ -2038,7 +2038,7 @@
          predstavlja problem? (refaktorisanje)}
   \noindent \textbf{Simptomi:}
   \begin{itemize}
-    \item Klasa ili metod koristi veliki broj metoda druge klase za čitanje vrednost.
+    \item Klasa ili metod koristi veliki broj metoda druge klase za čitanje vrednosti.
   \end{itemize}
 
   \noindent \textbf{Uzrok:} 
@@ -2054,7 +2054,7 @@
 
   \noindent \textbf{Isplativost:} 
   \begin{itemize}
-    \item Bolja stuktura softvera.
+    \item Bolja struktura softvera.
   \end{itemize}
 
 \section{Zašto naredba switch može da predstavlja problem? (refaktorisanje)}
@@ -2074,7 +2074,7 @@
   \begin{itemize}
     \item Izdvajanje metoda.
     \item Premeštanje metoda.
-    \item Zamena kodiranog podataka potklasom (kada ima dosta operacija nad nekim kodiranim tipom
+    \item Zamena kodiranog podatka potklasom (kada ima dosta operacija nad nekim kodiranim tipom
           , često je dobro rešanje da se taj kodirani podatak izdvoji u klasu).
     \item Zamena uslova polimorfizmom.
     \item Zamena parametara eksplicitnim metodom.
@@ -2257,7 +2257,7 @@
   \begin{itemize}
     \item Ime, veoma bitan izbor (kao kod uzoraka).
     \item Sažet opis slučaja u kome se primenjuje.
-    \item Motivacija, koja koriste se može očekivati nakon primenjene tehnike.
+    \item Motivacija, šta se može očekivati nakon primenjene tehnike.
     \item Opis izvođenja tehnike.
     \item Primer (sa evetualnom vizualizacijom).
   \end{itemize}  
@@ -2271,7 +2271,7 @@
     \item \textbf{Premeštanje koda između objekata:} Koriste se za premeštanje poslova
           između objekata ili skrivanje funkcionalnosti. Primeri: premeštanje metoda,
           premeštanje atributa, izdvajanje klasa, izbacivanje posrednika, ...
-    \item \textbf{Organizovanje podataka:} Koriste se u okviru klasa da povećanju njenu
+    \item \textbf{Organizovanje podataka:} Koriste se u okviru klasa da povećaju njenu
           primenljivost u drugim situacijama. Primeri: transformacija bidirekcione
           asocijacije u direkcionu asocijaciju, enkapsulacija, ...
     \item \textbf{Pojednostavljivanje uslovnih izraza:} Koriste se da bi se logika u okviru
@@ -2337,7 +2337,7 @@
     \item Stepen negativnog uticaja na performanse je obično daleko niži od ostvarenog pozitivnog
           uticaja na dizajn.
     \item Pisanje struktuiranog koda je daleko efikasnije nego pisanje optimizovanog koda.
-    \item Troškovi razvoja su često važniji od troškova eksploatacije. 
+    \item Troškovi razvoja su često važniji od troškova eksploatacije.
   \end{itemize}
   \textbf{Metode:}
   \begin{itemize}
