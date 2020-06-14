@@ -1013,6 +1013,20 @@
     \item Unikat (Singleton)
   \end{enumerate}
 
+  \textbf{Uzorci za projektovanje koji nisu objašnjeni u okviru narednih pitanja, a opet mogu potencijalno da
+          dođu na ispit:}
+  \begin{itemize}
+    \item \textbf{Builder:} Ukoliko je potrebno da se pravi više kompleksnih objekata sa sličnom strukturom, onda je
+          \textbf{Graditelj} dobro rešenje. Primer: Konstrukcija kuća koje mogu, a ne moraju da imaju neke elemente
+          kao što su garaža, bazen, kamin, \dots Jedno rešenje je da se koristi komplikovani konstruktor sa parametrima
+          koji govore koje elemente treba kuća da sadrži. Alternativa je da se konstrukcija apstrahuje u zasebnu klasu
+          koja ima metode tipa \textit{buildWalls(), buildDoors(), buildWindows, buildPool(), \dots}.
+    \item \textbf{Prototype:} Ovaj uzorak za projektovanje odgovara interfejsu \textbf{Cloneable} u Java-i. Svaka
+          klasa može da nasledi klasu (C++) ili implementira interfejs (Java) sa jednostavnom metodom \textit{clone()}
+          koja kopira objekat. Motivacija: Samo sam objekat zna kojeg je tipa (primer: polimofrizam) i vrednosti
+          svojih privatnih polja.
+  \end{itemize}
+
 \section{Objasniti namenu strukturnih uzoraka za projektovanje.}
   Bave se načinom na koji se klase i objekti sastavljaju u veće strukture. Dele se na 
   \textbf{strukturne uzorke klasa} i \textbf{strukturne uzorke sa domenom objekata}.
@@ -1031,6 +1045,32 @@
     \item Muva (Flyweight)
     \item Proksi (Proxy)
   \end{enumerate}
+
+  \textbf{Uzorci za projektovanje koji nisu objašnjeni u okviru narednih pitanja, a opet mogu potencijalno da
+          dođu na ispit:}
+  \begin{itemize}
+    \item \textbf{Adapter:} Predstavlja specijalan objekat koji se koristi za komunikaciju dve klase (biblioteke) koje 
+          imaju nekompatiblne interfejse, gde je njegov zadatak da omogući njihovu komunikaciju. Primer: Napravljena
+          je biblioteka koja predstavlja Scraper sa određene vrste \textit{XML} fajlova. Pored te biblioteke 
+          postoji odlična biblioteka za vizuelizaciju statistika nad podacima, ali problem je što ona radi sa 
+          \textit{JSON} podacima. Rešenje je da se koristi Adapter objekat koji prevodi \textit{XML} u \textit{JSON}
+          podatke.
+    \item \textbf{Bridge:} Predstavlja uzorak za projektovanje koji nam omogućava da razdvojimo veliku klasu
+          ili grupu bliskih klasa na dve odvojene hijearhije koje mogu odvojeno da se razvijaju. Primer:
+          Apstraktnu klasu Predmet nasleđuju klase CrvenaLopta, PlavaLopta, CrvenaKutija, PlavaKutija. Ovde ima 
+          smisla napraviti zasebnu klasu Boja koju nasleđuju klase Plava i Crvena, a da u hijearhiji klase Predmet
+          ostanu samo klase Lopta i Kutija. Klasa Predmet sada ima posebno polje tipa Boja. Sada hijearhije 
+          Predmet i Boja mogu nezavisno da se razvijaju.
+    \item \textbf{Facade:} Predstavlja uzorak za projektovanje koji olakšava održavanje interfejsa kompleksnog sistema.
+    \item \textbf{Flyweight:} Predstavlja uzorak za projektovanje koji omogućava da se više objekata smesti u radnu 
+          memoriju tako što deli zajedničke delove objekata. Primer: Ukoliko se prezentuje više identičnih slika
+          na različitim pozicijama, dovoljno je da se pamti slika samo na jednom mestu.
+    \item \textbf{Proxy:} Ovaj uzorak za projektovanje se koristi kada se radi sa skupom objekata koji su skupi,
+          a potencijalno se koriste. To znači da ima smisla da se implementira lenja inicijalizacija tj. 
+          da se objekat zapravo kreira tek kad se on zahteva. Ovo može da izazove dupliranje koda. Rešenje je 
+          koristiti \textbf{Proksi} uzorak za projektovanje koji nudi ,,prazan`` objekat sa istim interfejsom.
+          Kada je potrebno da se zapravo koristi pravi projekat, proksi kreira taj objekat.
+  \end{itemize}
 
 \section{Objasniti namenu uzoraka ponašanja.}
   Bave se algoritmima i raspodelama odgovornosti. Ne opisuju samo uzorke objekata ili klasa
@@ -1054,6 +1094,18 @@
     \item Šablonski metod (Template Method)
     \item Posetilac (Visitor)
   \end{enumerate}
+
+  \textbf{Uzorci za projektovanje koji nisu objašnjeni u okviru narednih pitanja, a opet mogu potencijalno da
+          dođu na ispit:}
+  \begin{itemize}
+    \item \textbf{Chain of Responsibility:} 
+    \item \textbf{Command:}
+    \item \textbf{Iterator:}
+    \item \textbf{Mediator:}
+    \item \textbf{Memento:}
+    \item \textbf{State:}
+    \item \textbf{Template Method:}
+  \end{itemize}
 
 \section{Objasniti kada se i kako primenjuje uzorak Proizvodni metod (Factory Method).}
   Kreiranje objekta se vrši bez otkrivanja implementacije korisniku. Za korisnika je dovoljno
