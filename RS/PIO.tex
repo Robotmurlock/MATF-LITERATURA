@@ -822,7 +822,7 @@
 \section{Navesti dijagrame interakcija.}
   \begin{enumerate}
     \item Dijagram komunikacije (communication diagram) 
-          - raniji naziv Dijagram saradnje (collaboration diagram)
+          - raniji naziv, Dijagram saradnje (collaboration diagram)
     \item Dijagram iterakcija (iteraction diagram ili interaction overview diagram)
     \item Dijagram sekvence (sequence diagram)
     \item Dijagram vremena (timing diagram)
@@ -4283,6 +4283,13 @@ Primer: prozor - dekorateri.\\
     \item Dobar način da se preduprede greške sa propuštanjem otključavanja.
   \end{itemize}
 
+  \textbf{Kada Koristimo QMutexLocker umesto QMutex? (ovo je analogno sa mutex i lock\_guard u C++-u)}
+  Ako u funkciji, metodi ili bloku koda koji zahtevaju eskluzivan pristup postoji više mesta izlaska 
+  (primer: na više mesta se koristi \textit{return}), potrebno je voditi računa o otključavanju muteks pre
+  svakog izlaska. Alternativa je da se koristi \textit{QMutexLocker} koji uzima vlasništvo nad muteksa i onemugućava
+  pristup sve do izlaska iz opsega u kojem je \textit{QMutexLocker} objekat definisan.
+  
+
 \section{Šta su katanci? Kako se upotrebljavaju?}
   Muteksi se ponašaju kao specijalan slučaj katanaca. Oni imaju samo ekskluzivan režim pristupa. 
   Apstrakcija katanca omogućava različite pristupe pod različitim uslovima. Uobičajeno:
@@ -4667,7 +4674,7 @@ Primer: prozor - dekorateri.\\
       \begin{itemize}
         \item Iskazuje uspešnost praćenja planova;
         \item Predstavlja se broj planiranih i ostvarenih zadataka u odnosu na vreme;
-        \item Na kvalitet utiče ujednačenost celicine zadataka.
+        \item Na kvalitet utiče ujednačenost celine zadataka.
       \end{itemize}
     \begin{figure}[H]
       \begin{center}
@@ -4675,7 +4682,7 @@ Primer: prozor - dekorateri.\\
       \end{center}
     \end{figure}
     \item \textbf{Mera završavanja:} Umesto ostvarenih poslova se predstavljaju preostali poslovi
-          u odnosu na vreme. Ima bar dve linije tj. plan i ostvarivanje.
+          u odnosu na vreme. Ima bar dve linije tj. plan i ostvarenje.
     \begin{figure}[H]
       \begin{center}
           \includegraphics[width=120mm,height=80mm]{Slike/mera_dovrsavanja.png}
