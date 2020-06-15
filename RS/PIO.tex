@@ -1098,12 +1098,20 @@
   \textbf{Uzorci za projektovanje koji nisu objašnjeni u okviru narednih pitanja, a opet mogu potencijalno da
           dođu na ispit:}
   \begin{itemize}
-    \item \textbf{Chain of Responsibility:} 
+    \item \textbf{Chain of Responsibility:} Koristi niz \textit{Handler}-a, gde svaki od njih
+          ima opciju da obradi zahtev koji stiže od klijenta ili prosledi zahtev sledećem u nizu.
     \item \textbf{Command:}
-    \item \textbf{Iterator:}
-    \item \textbf{Mediator:}
+    \item \textbf{Iterator:} Iterator nam omogućava da prolazimo kroz kolekcije podataka (primer:
+          lista, niz, binarno drvo, \dots), a da se pritom ne vodi računa o internoj implementaciji
+          te kolekcije. Ovo nam omogućava da jednostavno promenimo klasu kolekcije, a da ne menjamo
+          dalje kod (primer: lista u niz). Iterator se definiše kao interfejs. U slučaju Java-e,
+          klasa mora da implementira \textit{iterator} interfejs.
+    \item \textbf{Mediator:} Posrednik se koristi da se reše odgovarajući problemi koji su nastali
+          kao posledica velike spregnutostni kompenenti. Primenom ovog uzorka dobijamo ograničenu
+          komunikaciju između objekata tj. komunikacija se vrši preko posrednika.
     \item \textbf{Memento:}
-    \item \textbf{State:}
+    \item \textbf{State:} Predstavlja uzorak projektovanja koji koristi slične koncepte kao konačni automat. Klasa
+          izvršava operacije i zavisnosti od stanja (kao da se sama klasa menja). 
     \item \textbf{Template Method:}
   \end{itemize}
 
