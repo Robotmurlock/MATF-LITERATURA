@@ -823,7 +823,7 @@
   \begin{enumerate}
     \item Dijagram komunikacije (communication diagram) 
           - raniji naziv, Dijagram saradnje (collaboration diagram)
-    \item Dijagram iterakcija (iteraction diagram ili interaction overview diagram)
+    \item Dijagram interakcija (interaction diagram ili interaction overview diagram)
     \item Dijagram sekvence (sequence diagram)
     \item Dijagram vremena (timing diagram)
   \end{enumerate}
@@ -1595,7 +1595,7 @@
   \end{itemize}
 
 \section{Šta je ,,Razvoj vođen testovima``?}
-  Razvoj vođen testovima je stil vođenja razvoja koji kaže sledeću stvar. Ako treba nešto 
+  Razvoj vođen testovima je stil vođenja razvoja koji kaže sledeću stvar: Ako treba nešto 
   da se isprogramira, pre nego što se isprogramira, prvo se piše deo koda koji proverava
   da li taj kod radi kako treba. Prvo se pišu testovi, potom se piše kostur datog koda koji
   u početku ne radi (ne prolazi testove), ali omogućava da se kod prevede. Nakon toga se piše kod.\\
@@ -2375,12 +2375,16 @@
 \section{Kako i zašto može biti otežano refaktorisanje u prisustvu baze podataka?}
   Menjanje struktura podataka ima široki uticaj. Migracija podataka je veoma neugodna. Treba
   menjati i bazu i kod istovremeno. Jedan od principa Agilnog razvoja je ne praviti bazu podataka
-  pre nego što je to potrebno, već prvo pokušati sa datotekama.
+  pre nego što je to potrebno, već prvo pokušati sa datotekama.\\
+
+  ,,Ne praviti bazu podataka pre vremena``
 
 \section{Zašto može biti otežano refaktorisanje spoljnog interfejsa neke klase?}
   Dok se promene odnose na implementaciju nekog sistema, sve je relativno jednostavno. Kada se
   počne menjati interfejs, potrebna je prava mera. Kada se menja javni interfejs, najčešće je
-  potrebno privremeno sačuvati stari interfejs.
+  potrebno privremeno sačuvati stari interfejs.\\
+
+  ,,Ne objavljivati javni interfejs pre vremena``
 
 \section{U kojim slučajevima refaktorisanje može da ne predstavlja dobro rešenje?}
   \begin{itemize}
@@ -4136,9 +4140,15 @@ Primer: prozor - dekorateri.\\
   \cite{cppref_threaddestructor}
 
 \section{Objasniti detaljno operaciju dovršavanja niti. Kako se implementira pomocu biblioteke QT?}
-  Nit se dovršava kada se završi izvršavanje metoda void run() objekta klase QThread. 
-  Dinamički napravljen objekat će biti automatski uklonjen ako mu se pri konstrukciji 
-  dodeli roditeljski objekat.
+  \begin{itemize}
+    \item Nit se dovršava kada se završi izvršavanje metoda void run() objekta klase QThread.
+    \item Postoji metod \textit{QThread::quit()} koji predstavlja opciju za dovršavanje niti.
+          Ovaj metod ne radi ništa ako nit nema petlju za proveru događaja ili neki deo koda
+          blokira petlju za proveru događaja.
+    \item Postoji metod \textit{QThread::terminate()}, ali korišćenje ove metode je loša
+          praksa.
+  \end{itemize}
+  
 
 \section{Objasniti detaljno operacije suspendovanja i nastavljanja niti. Kako se implementiraju
          standardne biblioteke C++-a?}
