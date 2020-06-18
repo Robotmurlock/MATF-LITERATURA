@@ -2934,23 +2934,25 @@ void TRACE(const char* s){
   koja prikazuje instrukcije procesora (registri, izvor, \dots). \cite{gdb_commands}
 
 \section{Šta je dizajn softvera? Šta je arhitektura softvera? Objasniti sličnosti i razlike.}
-  \textbf{Dizajn softvera} je struktura softverskog sistema. Dizajn softvera je takođe disciplina
-  koja se bavi strukturom softverskog sistema i dokumentacija koja opisuje strukturu softverskog
-  sistema. \\ 
-  \indent \textbf{Arhitektura softvera} je struktura softverskog sistema, ali posmatrana
-  na relativno visokom nivou. Arhitektura softvera je takođe disciplina
-  koja se bavi strukturom softverskog sistema i dokumentacija koja opisuje strukturu softverskog
-  sistema. \\
+  % \textbf{Dizajn softvera} je struktura softverskog sistema. Dizajn softvera je takođe disciplina
+  % koja se bavi strukturom softverskog sistema i dokumentacija koja opisuje strukturu softverskog
+  % sistema. \\ 
+  % \indent \textbf{Arhitektura softvera} je struktura softverskog sistema, ali posmatrana
+  % na relativno visokom nivou. Arhitektura softvera je takođe disciplina
+  % koja se bavi strukturom softverskog sistema i dokumentacija koja opisuje strukturu softverskog
+  % sistema. \\
   \indent Dizajn softvera i arhitektura softvera su strukture softverskog sistema. Razlika je u
-  tome što je arhitektura softvera posmatrana na relativno visokom nivou. To znači da je
-  svaka arhitektura softvera dizajn softvera, ali ne važi obrnuto. \\
+  tome što je arhitektura softvera posmatrana na relativno visokom nivou. Arhitektura se odnosi više
+  na spoljni deo softvera, tj. kako komponente komuniciraju međusobno i predstavlja apstrahciju 
+  celog sistema. To znači da je svaka arhitektura softvera dizajn softvera, ali ne važi obrnuto.
+  Neformalno rečeno, arhitekturu softvera ne zanima implementacija. \\
 
   ``Arhitektura predstavlja značajne odluke o dizajnu koje daju oblik sistemu, gde je značajnost
   određena cenom pravljenja izmena``
   \\[5pt]
   \rightline{{\rm --- Grady Booch, 2001}}\\
 
-  Pri pravljenju arhitekture softverskog sisteme preduzimaju se neke specifične aktivnosti i
+  Pri pravljenju arhitekture softverskog sistema preduzimaju se neke specifične aktivnosti i
   uzimaju u obzir specifični aspekti problema:
   \begin{itemize}
     \item Veliki značaj širine posmatranja;
@@ -3402,7 +3404,7 @@ Opšti primer:
     \item \textbf{Često ponavljanje koda:} Ako se koncept izmeni, moraju se menjati sve komponente
           koje ga upotrebljavaju. 
     \item \textbf{Podeljene odgovornosti:} Poželjno je razmotriti učauravanje elemenata spoljašnjeg
-          koncepta u novu komponentu (ili komponente), koju i zatim koristile ovako spregnute 
+          koncepta u novu komponentu (ili komponente), koju bi zatim koristile ovako spregnute 
           komponente.
   \end{itemize}
   Spoljašnja spregnutost je sasvim prihvatljiva ako su spoljašnji koncepti relativno stabilni
@@ -3916,7 +3918,7 @@ Primer: prozor - dekorateri.\\
   
 \section{Objasniti pojam proces.}
   \textbf{Proces} je instanca programa koja se izvršava na računarskom sistemu. 
-  Obično se razmatra samo u kontekstu računarski sistema koji imaju mogućnost 
+  Obično se razmatra samo u kontekstu računarskih sistema koji imaju mogućnost 
   izvršavanja više programa (ili instanci programa) u ,,isto`` vreme. Ranije je definicija 
   podrazumevala da se proces izvršava sekvencijalno, ali to više nije tako.\\
   \textbf{Proces obuhvata:}
@@ -3954,6 +3956,7 @@ Primer: prozor - dekorateri.\\
 \section{Objasniti pojam nit.}
   \textbf{Nit izvršavanja} je komponenta koja se izvršava sekvencijalno. Jedan proces može imati više 
   niti, ako računarski sistem to podržava. Svaki proces započinje sa jednom glavnom niti.
+  Nit je najmanja samostalna jedinica izvršavanja na procesoru.
 
   \begin{figure}[H]
     \begin{center}
@@ -3969,7 +3972,7 @@ Primer: prozor - dekorateri.\\
         \item Informacije o upravljanju resursima;
         \item Informacije o memoriji (tablica stranica, podaci o alokaciji memorije, ...);
         \item Deskriptori datoteka;
-        \item Stanje izvršavanje procesa;
+        \item Stanje izvršavanja procesa;
         \item Ostali resursi, poput U/I zahteva i sl.
       \end{itemize}
     \item Podaci o niti obuhvataju:
@@ -4052,7 +4055,7 @@ Primer: prozor - dekorateri.\\
   \begin{itemize}
     \item \textit{bool isFinished()}
     \item \textit{bool isRunning()}
-    \item \textit{bool wait(unsigned long time msec = ULONG MAX)}
+    \item \textit{bool wait(unsigned long time msec = ULONG\_MAX)}
   \end{itemize}
   \textbf{Slotovi (mogu se koristiti kao metodi):}
   \begin{itemize}
@@ -4195,12 +4198,12 @@ Primer: prozor - dekorateri.\\
 
   Čekanje da se nit završi se izvodi pozivanjem metoda \textit{void join()}. Metod \textit{join()}
   završava rad tek kada odgavarajuća nit završi izvršavanje. Napomena: Na istoj niti se ne sme 
-  da se pozove dva puta metod \textit{join()}. 
+  pozvati dva puta metod \textit{join()}. 
 
 \section{Objasniti detaljno operaciju čekanja niti. Kako se implementira pomoću biblioteke QT?}
   Biblioteka QT nema \textit{join()} metodu za niti. Ali metoda \textit{wait()} vrši sličnu
-  funkciju. Nit se može čekati pozivanjem metoda bool \textit{wait(unsigned long time = ULONG MAX)}. 
-  Ako se argument ne navede (ili se navede ULONG MAX), metod čeka dok se nit ne završi. 
+  funkciju. Nit se može čekati pozivanjem metoda bool \textit{wait(unsigned long time = ULONG\_MAX)}. 
+  Ako se argument ne navede (ili se navede ULONG\_MAX), metod čeka dok se nit ne završi. 
   Inače, metod čeka na završavanje niti najviše \textit{time} milisekundi. 
   Metod vraća \textit{true} ako nit više nije aktivna (ili je završena ili nije ni započela rad) 
   i \textit{false} ako je nit jos aktivna.
@@ -4457,8 +4460,8 @@ Primer: prozor - dekorateri.\\
 
 \newpage
 \section{Objasniti šablone future i promise standardne biblioteke C++-a}
-  Šablonska klasa \textit{promise} omogućava čuvanje vrednost ili izuzetka koji su
-  kasnije preuzeti asinhrono preko \textit{future} objekta koji je kreiran preko
+  Šablonska klasa \textit{promise} omogućava čuvanje vrednosti ili izuzetka koji će
+  kasnije biti preuzeti asinhrono preko \textit{future} objekta koji je kreiran preko
   \textit{promise} objekta. Objekat \textit{promise} je namenjen da se koristi samo jednom.
   \cite{cppref_promise}
 
