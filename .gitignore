@@ -7,4 +7,5 @@
 *.out
 *.toc
 *.gz
-.vscode
+*.vscode
+*.dvi

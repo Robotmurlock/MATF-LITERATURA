@@ -4698,7 +4698,7 @@ Primer: prozor - dekorateri.\\
   \textbf{Metrike softvera:} Iskazuju neke merljive odlike softvera. Odnose se 
   na softver, kao proizvod razvojnog procesa.
   
-\section{Navesti nekoliko metrika praćenja razvoja softvera. šta One opisuju?}
+\section{Navesti nekoliko metrika praćenja razvoja softvera. Šta One opisuju?}
   Zovu se i \textbf{metrike upravljanja} zato što su važne pre svega upravljačkom timu:
   \begin{itemize}
     \item \textbf{Mera napretka:}
@@ -4905,10 +4905,10 @@ Primer: prozor - dekorateri.\\
   \indent Po potrebi se verzija može izvoziti (eng. export), pri čemu se pravi nova lokalna kopija, 
   nalik na radnu kopiju, ali koja ne sadrži metapodatke o preuzimanju i spremištu.\\
   
-  \textbf{Osnovna linija:} Sekvenca verzija koja se uzastopno menjaju naziva se glavna linija. 
+  \textbf{Osnovna linija:} Sekvenca verzija koje se uzastopno menjaju naziva se glavna linija. 
   Usled mogućnosti grananja, može postojati više glavnih linija. Osnovna glavna linija se naziva 
   osnovna linija (eng. trunk, main, baseline). Poslednje podnošenje osnovne linije se naziva 
-  glava (eng. head).
+  glava (eng. head).\\
   
   \textbf{Izmene:} Svakim podnošenjem se prave nove verzije pojedinačnih menjanih fajlova i 
   nova verzija projekta. Izmene se prave pravljenjem novih grana. Poseban vid izmena je tzv. 
@@ -4934,7 +4934,7 @@ Primer: prozor - dekorateri.\\
     \item Primer: verzija koja se javno publikuje;
     \item Ali i verzija koja predstavlja neki interno značajan trenutak.
   \end{itemize}
-  Označena verzija (ili kraće smao oznaka) (eng. tag, label) je verzija koja je posebno 
+  Označena verzija (ili kraće samo oznaka) (eng. tag, label) je verzija koja je posebno 
   označena radi kasnijeg referisanja:
   \begin{itemize}
     \item Verzija se označava davanjem odgovarajućeg imena;
@@ -4954,7 +4954,7 @@ Primer: prozor - dekorateri.\\
   integrisanje (eng. reverse integration). Npr. razvijanje komponente za koju nije unapred 
   poznato kada će biti uključena u osnovnu liniju.
 
-\section{Šta su koflikti i kako se rešavaju u kontekstu upotrebe sistema za kontrolu verzija?}
+\section{Šta su konflikti i kako se rešavaju u kontekstu upotrebe sistema za kontrolu verzija?}
   \noindent Često se dešava da se neki fajl menja od strane više klijenata ,,istovremeno``:
   \begin{itemize}
     \item Ko prvi podnese izmenjen fajl, imaće jednostavniji posao;
@@ -4976,7 +4976,7 @@ Primer: prozor - dekorateri.\\
 \section{Objasniti primer strategije označavanja verzija.}
   Određivanje strategije označavanja verzija je sastavni deo upravljanja razvojnim projektom. 
   Uobičajeno cetvorodelno označavanje verzije:\\
-  \indent $<glavna verzija>.<podverzije>[.<popravka>[.<revizija>]]$\\
+  \indent $<glavna verzija>.<podverzija>[.<popravka>[.<revizija>]]$\\
   \textbf{Glavna verzija:}
   \begin{itemize}
     \item Menja se kada su uvedene značajne izmene u odnosu na prethodnu verziju softvera;
@@ -5066,7 +5066,7 @@ Primer: prozor - dekorateri.\\
   vraćaju na 0 kada se prethodni broj promeni:
   \begin{itemize}
     \item Posle 3.1.6 ide 3.2.0;
-    \item Tako se omogućava da se i posle objavljivanja nove verzija (podverzije) i dalje 
+    \item Tako se omogućava da se i posle objavljivanja nove verzije (podverzije) i dalje 
           obezbeđuju popravke prethodnih verzija (posle 3.2.0 može da se objavi 3.1.7).
   \end{itemize}
   \textbf{Poslednji broj može da ima različito značenje:}
@@ -5105,7 +5105,7 @@ Primer: prozor - dekorateri.\\
 \section{Navesti i ukratko objasniti osnovne koncepte sistema Red-mine.}
   Savremeni sistemi za praćenje poslova su fleksibilni:
   \begin{itemize}
-    \item Podržavaju više vrsta kartica (npr. bagovi, zadaci, nagradnje, diskusije i sl.);
+    \item Podržavaju više vrsta kartica (npr. bagovi, zadaci, nadogradnje, diskusije i sl.);
     \item Za svaku vrstu se mogu definisati različita stanja i načini prolazaka kroz stanja;
     \item Različite grupe korisnika imaju različita prava, u zavisnosti od stanja kartice;
     \item Automatsko slanje obaveštenja elektronskom poštom;
@@ -5194,7 +5194,7 @@ Primer: prozor - dekorateri.\\
     \item Nisu uvek svi članovi tima na istoj lokaciji;
     \item Dokumentacija je kao vid statičke komunikacije pogodna za informisanje 
           dislociranih članova tima. 
-    \item Posebno važno u slučaju otvorenih projekata, autosorsinga i slično;
+    \item Posebno važno u slučaju otvorenih projekata, autsorsinga i slično;
   \end{itemize}
   \textbf{Da bi se definisali ciljevi rada za neku drugu grupu:}
   \begin{itemize}
@@ -5351,14 +5351,14 @@ Primer: prozor - dekorateri.\\
 \section{Šta su alati za unutrašnje dokumentovanje programskog koda? Zašto su potrebni i po čemu 
          se suštinski razlikuju od održavanja spoljašnje dokumentacije?}
   Unutrašnja dokumentacija objašnjava kako kod funkcioniše (primer: komentari u kodu), a
-  spoljašnja dokumentacija objašnjava kako softver koristi.\\
+  spoljašnja dokumentacija objašnjava kako se softver koristi.\\
 
   Alati za unutrašnje dokumentovanje programskog koda služe za automatsko generisanje
   skeleta dokumentacije, što značajno olakšava posao.
 \section{Šta je Doxygen? Šta omogućava? Navesti primere anotacije koda.}
   \begin{itemize}
     \item Veoma široko usvojen alat za dokumentovanje programskog koda.
-    \item Praktično standard za programske jezike: C++, C, Objective	C, C\#, P HP , Java, Python, IDL
+    \item Praktično standard za programske jezike: C++, C, Objective	C, C\#, PHP, Java, Python, IDL
     \item Pravi dokumentaciju u HTML-u za onlajn pregledanje.
     \item Pravi dokumentaciju u LATEX, RTF, PostScript, PDF ili Unix man formatu.
     \item Dokumentacija se pravi automatski na osnovu anotiranih izvornih fajlova. 
@@ -5427,7 +5427,8 @@ Primer: prozor - dekorateri.\\
     int var; ///< Brief description after the member\end{lstlisting}
     \item Dokumentacija parametara funkcije:
     \begin{itemize}
-      \item @param za informaciju o parametrima i [in], [out], [in,out] za smer
+      \item @param za informaciju o parametrima
+      \item {[in]}, [out], [in,out] za smer parametara
     \end{itemize}
     \begin{lstlisting}
     void foo(int v /**< [in] docs for input parameter v. */);\end{lstlisting}
@@ -5607,7 +5608,7 @@ Primer: prozor - dekorateri.\\
   efikasniji od algoritma quicksort.
   
 \section{Koje su najčešće greške pri optimizaciji? Objasniti.}
-  \textbf{Ništa ne pretpostavljati:} Često se pogrešno pretpostavlja da je ,,A efikasnije nego B``. 
+  \textbf{Pretpostavke:} Često se pogrešno pretpostavlja da je ,,A efikasnije nego B``. 
   Svaka pretpostavka mora da se proveri. Primer besmislene optimizacije:
   \begin{itemize}
     \item Umesto da napišemo a = b * 40
@@ -5643,7 +5644,7 @@ Primer: prozor - dekorateri.\\
   Neke optimizacije mogu da se prave u hodu (ali veoma oprezno):
   \begin{itemize}
     \item Prenošenje objekata po referenci (osim, eventualno, u slučaju sasvim malih objekata);
-    \item Deklarisanje privremenih promenljivih što dublje u kodi (da se ne prave ako nije potrebno);
+    \item Deklarisanje privremenih promenljivih što dublje u kodu (da se ne prave ako nije potrebno);
     \item Koristiti konstrukciju objekata (inicijalizaciju) pre nego dodeljivanje;
     \item Koristiti liste incijilazicija članova i baznih objekata;
     \item Implementirati sopstvene operatore alokacije i dealokacije (new i delete);
@@ -5669,7 +5670,7 @@ Primer: prozor - dekorateri.\\
   sa grafičkim kontrolama, gde korisnik može da interaguje sa softverom koristeći
   miš ili tastaturu. Primer: Način koji interagujemo sa operativnim sistemom na \textit{Windows}-u.
 
-\section{Koje su osnovni kvaliteti i slabosti grafičkih korisničkih interfejsa?}
+\section{Koji su osnovni kvaliteti i slabosti grafičkih korisničkih interfejsa?}
   \noindent \textbf{Prednosti:}
   \begin{itemize}
     \item Ne zahteva memorisanje imena komandi;
