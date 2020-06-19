@@ -2992,7 +2992,7 @@ void TRACE(const char* s){
   % sistema. \\
   \indent Dizajn softvera i arhitektura softvera su strukture softverskog sistema. Razlika je u
   tome što je arhitektura softvera posmatrana na relativno visokom nivou. Arhitektura se odnosi više
-  na spoljni deo softvera, tj. kako komponente komuniciraju međusobno i predstavlja apstrahciju 
+  na spoljni deo softvera, tj. kako komponente komuniciraju međusobno i predstavlja apstrakciju 
   celog sistema. To znači da je svaka arhitektura softvera dizajn softvera, ali ne važi obrnuto.
   Neformalno rečeno, arhitekturu softvera ne zanima implementacija. \\
 
@@ -3843,7 +3843,7 @@ Primer: prozor - dekorateri.\\
   \textbf{Argumenti:}
   \begin{enumerate}
     \item Pokazivač na objekat koji emituje signal;
-    \item Signal koji se emituje (navodi se pomocu makroa SIGNAL
+    \item Signal koji se emituje (navodi se pomoću makroa SIGNAL
           ili kao pokazivač na funkciju koja predstavlja signal);
     \item Pokazivač na objekat koji hvata signal;
     \item Slot kojim se signal hvata (navodi se pomoću makroa SLOT
@@ -4184,7 +4184,7 @@ Primer: prozor - dekorateri.\\
   ,,Objasniti kako se programiraju niti pomoću standardne biblioteke C++-a. Klase, metodi, \dots``
 
 \section{Objasniti detaljno operaciju pravljenja niti. 
-         Kako se implementira pomocu biblioteke QT?}
+         Kako se implementira pomoću biblioteke QT?}
   Objekat klase QThread predstavlja pomoćno sredstvo za rukovanje nitima OS-a. 
   Konstrukcija objekata ne obuhvata pravljenje niti. Nova nit se zaista pravi (na nivou OS-a) 
   kada se pozove metod void \textit{start()} objekta klase QThread.\\
@@ -4201,7 +4201,7 @@ Primer: prozor - dekorateri.\\
   \indent Ako je nit spojiva (\textit{joinable() == true}), poziva se \textit{terminate()}.
   \cite{cppref_threaddestructor}
 
-\section{Objasniti detaljno operaciju dovršavanja niti. Kako se implementira pomocu biblioteke QT?}
+\section{Objasniti detaljno operaciju dovršavanja niti. Kako se implementira pomoću biblioteke QT?}
   \begin{itemize}
     \item Nit se dovršava kada se završi izvršavanje metoda void run() objekta klase QThread.
     \item Postoji metod \textit{QThread::quit()} koji predstavlja opciju za dovršavanje niti.
@@ -4219,7 +4219,7 @@ Primer: prozor - dekorateri.\\
   ili \textit{sleep()}. \cite{cppref_yield} 
   
 \section{Objasniti detaljno operaciju suspendovanja i nastavljanja niti. 
-         Kako se implementira pomocu biblioteke QT?}
+         Kako se implementira pomoću biblioteke QT?}
   Suspendovanje niti nije moguće u QT.
   
 \section{Objasniti detaljno operaciju prekidanja niti. Kako se implementira pomoću standardne
@@ -4285,8 +4285,8 @@ Primer: prozor - dekorateri.\\
           koji zahteva kritičnu sekciju, ako je muteks otključan ili da radi drugi posao
           koji ne zahteva kritičnu sekciju, ako je muteks zaključan.
     \item \textbf{void unlock():} Otključava muteks. Ako je muteks već otključan, onda nije
-          definisano ponašanje.
-  \end{itemize}\cite{cppref_mutex}
+          definisano ponašanje.\cite{cppref_mutex}
+  \end{itemize}
 
   \section{Objasniti podrsku za mutekse u okviru biblioteke QT.}
   Muteksi su implementirani klasom \textbf{QMutex}. \\
