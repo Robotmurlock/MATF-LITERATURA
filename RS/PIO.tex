@@ -74,7 +74,7 @@
 			int* p3=(int*)1000;\end{lstlisting}
 		Pokazivač p2 nije ispavno definisan tj. p2 je običan ceo broj.
 
-\section{U kakvom su odnosu duzine nizova s1 i s2 u primeru:}
+\section{U kakvom su odnosu dužine nizova s1 i s2 u primeru:}
 		\begin{lstlisting}
 			char s1[] = "C++";
       char s2[] = {'C', '+', '+' };\end{lstlisting}
@@ -156,14 +156,14 @@
     statičkog polimorfizma tj. polimorfizam koji se obrađuje tokom kompilacije.\cite{cppref_templates}
 
 \section{Kako se pišu i koriste šabloni funkcija?}
-  Primer:
+  \noindent Primer:
   \begin{lstlisting}
     template<typename T> 
     T sum(T a, T b)
     {
       return a + b;
     }\end{lstlisting}
-  \textbf{Napomena:} Ako napišemo šablon f-je i ne koristimo u programu nijednom konkretnu f-ju
+  \textbf{Napomena:} Ako napišemo šablon funkcije i ne koristimo u programu nijednom konkretnu funkciju,
   onda će nam kompajler dati isti izvršni kod kao da nismo pisali šablon. Kompajler prevodi 
   sve konkretizovane funkcije nekog šablona. Isto važi i za klase. \\
   \textbf{Napomena:} Ako definišemo konkretnu funkciju (npr. int sum(int a, int b)), onda on ima 
@@ -177,7 +177,7 @@
   }\end{lstlisting}
 
 \section{Šta su šabloni klasa?}
-  Primer:
+  \noindent Primer:
   \begin{lstlisting}
     template<typename A, typename B>
     struct Pair{
@@ -190,19 +190,19 @@
     }\end{lstlisting}
   Isto kao i šabloni funkcija, samo se odnosi na generičke klase. Primeri generičkih klasu su mape, 
   vektori, skupovi, \dots, koji su već deo C++-a. \\
-  \indent Primer: 'vector<int>', možemo posmatrati kao funkciju 
+  \indent Primer: ,,vector<int>``, možemo posmatrati kao funkciju 
   koja prima kao argument celobrojni tip i vraća vektor celih brojeva (konkretan vektor).
 
 \section{Kako se prevode šabloni klasa?}
   Svi generički tipovi se zamene sa konkretnim tipovima.
-  Primer: Za prethodno pitanje 'vector<int>' dobijamo tako što zamenimo sva pojavljivanja generičkog 
-  tipa 'T' sa konkretnim tipom 'int'. Dobijeni kod kompilator može prevesti na klasičan način. 
+  Primer: Za prethodno pitanje ,,vector<int>`` dobijamo tako što zamenimo sva pojavljivanja generičkog 
+  tipa ,,T`` sa konkretnim tipom ,,int``. Dobijeni kod kompilator može prevesti na klasičan način. 
   Bitno je naglasiti da je ovaj proces statičan.
 
 \section{Šta je neophodan uslov da bi se pozivi nekog metoda dinamički vezivali? Šta je dovoljan uslov?}
   \textbf{Napomena:} Mora da važi svaki \underline{neophodan uslov} i 
   mora da važi barem jedan \underline{dovoljan uslov}!\\
-  \textbf{Neophodan uslov:} Metod mora biti virtuelan. Metod je virtuelan ako ima ključnu reč 'virtual'.\\
+  \textbf{Neophodan uslov:} Metod mora biti virtuelan. Metod je virtuelan ako ima ključnu reč ,,virtual``.\\
   \textbf{Dovoljan uslov:} Objektu pristupimo preko reference ili preko pokazivača.
   Primer:
   \begin{lstlisting}
@@ -224,7 +224,7 @@
 \section{Šta je čisto virtuelna funkcija?}
   U C++-u čisto virtuelna funkcija i apstraktna funkcija predstavljaju sinonime. Čisto virtuelna funkcija
   je funkcija koja nema svoju implementaciju u okviru klase. Klasa koja sadrži čisto virtuelnu funkciju
-  je apstrakna klasa. Čisto virtuelnu metodu označavamo sa '$= 0$' kao sufiks.
+  je apstrakna klasa. Čisto virtuelnu metodu označavamo sa ,,$= 0$`` kao sufiks.
   Primer:
   \begin{lstlisting}
   class VirtualObject{
@@ -241,8 +241,8 @@
 
 \section{Šta su umetnute (inline) funkcije? Kako se pišu?}
   Umetnute ,,inline`` funkcije su funkcije koje imaju prefiks ,,inline``. Predstavlja sugestiju kompajleru
-  da 'proširi' funkciju na mestu gde je pozvana. Ideja je da se zaobiđe postavljanje funkcije
-  na 'stackframe' i da se povećaju performanse. \\
+  da ,,proširi`` funkciju na mestu gde je pozvana. Ideja je da se zaobiđe postavljanje funkcije
+  na ,,stackframe`` i da se povećaju performanse. \\
   \indent Ovo predstavlja samo sugestiju. Kompajler odlučuje da će li funkcija zapravo biti proširena. 
   Funkcije koje nemaju ,,inline`` takođe mogu biti proširene.
 
@@ -342,7 +342,7 @@
       \item Tok praktičnog razvoja bez cvrstih principa i pravila.
     \end{itemize}
 
-\section{Koji su najčešci problemi koji se odnose na ove strane u razvoju softvera 
+\section{Koji su najčešci problemi koji se odnose na obe strane u razvoju softvera 
          (ulagači i razvijaoci)? Objasniti ukratko.}
     \begin{itemize}
       \item Slaba komunikacija između klijenata, razvijaoca i korisnika;
@@ -747,8 +747,8 @@
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama paketa?}
   Ilustruje kako su elementi logičkog modela organizovani u pakete, kao i međuzavisnosti paketa. 
-  Paket je često sinonim za prostor imena. Okuplja elemente koji su semantički povezani 
-  i očekuje se da se zajedno menjaju. \\
+  Paket je često sinonim za prostor imena (\textit{namespace}). Okuplja elemente koji su semantički 
+  povezani i očekuje se da se zajedno menjaju. \\
   \textbf{Sadrži:}
   \begin{itemize}
     \item nazive i granice paketa
@@ -831,6 +831,11 @@
 \section{Koja je uloga i šta su osnovni elementi dijagrama komunikacije?}
   Predstavlja produženje dijagrama objekata gde su predstavljene interakcije između objekata.
   Dijagram prikazuje objekte uz poruke koje oni šalju. Sadrži objekte, poruke i evetualno komentare.
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=100mm,height=60mm]{Slike/dijagram_komunikacije.png}
+    \end{center}
+  \end{figure} 
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama interakcije?}
   Predstavlja varijantu dijagrama aktivnosti gde su čvorovi interakcije ili aktivnost.\\
@@ -843,6 +848,11 @@
     \item grananja i spajanja
     \item početak i kraj
   \end{itemize}
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=120mm,height=60mm]{Slike/dijagram_interakcije.png}
+    \end{center}
+  \end{figure} 
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama sekvenci?}
   Prikazuju interakcije objekata u kontekstu saradnje. Ovi dijagrami imaju akcenat na vremenu i
@@ -899,7 +909,7 @@
   Opisuje slučaj u kome se uzorak koristi.
   Opisuju se i problem i njegov kontekst.
   Moguć je opis specifičnih problema (primera).
-  Problem se može opisivati strukture klasa ili objekata čije osobine nagoveštavaju kruto 
+  Problem može opisivati strukture klasa ili objekata čije osobine nagoveštavaju kruto 
   projektovanje. Ponekad problem sadrži spisak uslova potrebnih da bi se uzorak primenio.
 
 \section{Objasniti rešenje, kao element uzoraka za projektovanje.}
@@ -1019,10 +1029,10 @@
     \item \textbf{Builder:} Ukoliko je potrebno da se pravi više kompleksnih objekata sa sličnom strukturom, onda je
           \textbf{Graditelj} dobro rešenje. Primer: Konstrukcija kuća koje mogu, a ne moraju da imaju neke elemente
           kao što su garaža, bazen, kamin, \dots Jedno rešenje je da se koristi komplikovani konstruktor sa parametrima
-          koji govore koje elemente treba kuća da sadrži. Alternativa je da se konstrukcija apstrahuje u zasebnu klasu
+          koji govori koje elemente treba kuća da sadrži. Alternativa je da se konstrukcija apstrahuje u zasebnu klasu
           koja ima metode tipa \textit{buildWalls(), buildDoors(), buildWindows, buildPool(), \dots}.
     \item \textbf{Prototype:} Ovaj uzorak za projektovanje odgovara interfejsu \textbf{Cloneable} u Java-i. Svaka
-          klasa može da nasledi klasu (C++) ili implementira interfejs (Java) sa jednostavnom metodom \textit{clone()}
+          klasa može da nasledi klasu (C++) ili implementira interfejs (Java) preko jednostavne metode \textit{clone()}
           koja kopira objekat. Motivacija: Samo sam objekat zna kojeg je tipa (primer: polimofrizam) i vrednosti
           svojih privatnih polja.
   \end{itemize}
@@ -1051,7 +1061,7 @@
   \begin{itemize}
     \item \textbf{Adapter:} Predstavlja specijalan objekat koji se koristi za komunikaciju dve klase (biblioteke) koje 
           imaju nekompatiblne interfejse, gde je njegov zadatak da omogući njihovu komunikaciju. Primer: Napravljena
-          je biblioteka koja predstavlja Scraper sa određene vrste \textit{XML} fajlova. Pored te biblioteke 
+          je biblioteka koja predstavlja \textit{Scraper} za određene vrste \textit{XML} fajlova. Pored te biblioteke 
           postoji odlična biblioteka za vizuelizaciju statistika nad podacima, ali problem je što ona radi sa 
           \textit{JSON} podacima. Rešenje je da se koristi Adapter objekat koji prevodi \textit{XML} u \textit{JSON}
           podatke.
@@ -1134,15 +1144,15 @@
     \item Klasa želi da njena potklasa specizira objekte koje stvara.
     \item Klasa prenosi odgovornost na jednu od nekoliko pomoćnih potklasa.
   \end{itemize}
-  \indent U Javi se ovaj uzorak za projektovanje dosta koristi. Primer: $InetAddress$ je klasa koja
+  \indent U Java-i se ovaj uzorak za projektovanje dosta koristi. Primer: $InetAddress$ je klasa koja
   reprezentuje IP protokol. Postoje dve verzije IP adresa: $ipv4$ i $ipv6$. Zbog toga postoje
   dve potklase klase $InetAddress$: $InetAddress4$ (za $ipv4$) i $InetAddress6$ (za $ipv6$). Umesto
   da korisnik za ove klase piše svoju funkciju za dedukciju tipa adrese, koristi se 
   statički metodi klase InetAddress kao što je, na primer, $getByName()$ koji vraća $InetAddress4$
   ili $InetAddress6$ objekat:
   \begin{lstlisting}
-    InetAddress address4 = InetAddress.getByName(,,www.google.rs``);
-    InetAddress address6 = InetAddress.getByName(,,ipv6.google.com``);\end{lstlisting}
+    InetAddress address4 = InetAddress.getByName("www.google.rs");
+    InetAddress address6 = InetAddress.getByName("ipv6.google.com");\end{lstlisting}
 
 \section{Skicirati dijagram klasa uzoraka za projektovanje Proizvodni metod (Factory Method).}
   \begin{figure}[H]
@@ -1219,6 +1229,39 @@
 \section{Objasniti kada se i kako primenjuje uzorak Unikat (Singleton).}
   Koristi se kad je potrebno osigurati da klasa ima samo jednu instancu i obezbediti globalnu 
   tačku pristupa za nju.
+
+\begin{lstlisting}
+  #include <iostream>
+
+  class Singleton {
+  private:
+      static Singleton* instance;
+  
+      Singleton() { count++; }
+      Singleton(const Singleton& s) = delete;
+      Singleton& operator=(const Singleton& s) = delete;
+  
+  public:
+      static Singleton* create()
+      {
+          if(!instance)
+              instance = new Singleton;
+          return instance;
+      }
+      static int count;
+  };
+  Singleton *Singleton::instance = 0;
+  int Singleton::count = 0;
+  
+  int main()
+  {
+      Singleton* singleton = singleton->create();
+      std::cout << singleton->count << std::endl;
+      Singleton* doubleton = doubleton->create();
+      std::cout << doubleton->count << std::endl;
+  
+      return 0;
+  }\end{lstlisting}
 
 \section{Skicirati dijagram klasa uzoraka za projektovanje Unikat (Singleton).}
   \begin{figure}[H]
@@ -1431,7 +1474,12 @@
   šta klijent želi u okviru neke celine koju razvojni tim treba da implementira. Radi okvirnog
   planiranja potrebno je sagledati zahteve, ali ne i potpuno precizne elemente zahteva. Neophodno
   je znati gde i kakvih detalja ima, ali ne i same detalje (detalji se menjaju tokom vremena). 
-  Prve (grube) procene rokova i troškova služe samo za upravljanje prioriteta. 
+  Prve (grube) procene rokova i troškova služe samo za upravljanje prioriteta. Primer:
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=100mm,height=80mm]{Slike/korisnicka_prica.png}
+    \end{center}
+  \end{figure} 
 
   Korisničke celine služe kao referenca na nešto što će se detaljnije razmatrati kada dođe red
   na implementaciju. 
@@ -1460,7 +1508,8 @@
   da postoje testovi u okviru korisničkih celina. Ove testove određuje klijent i pišu se 
   neposredno ili čak paralelno sa implementacijom iste celine. Testovi se po mogućnosti automatizuju. 
   Ovi testovi se ponavljaju svaki put po izgradnji sistem (nekoliko puta dnevno).
-  \cite{xporg_acceptance_tests}
+  \cite{xporg_acceptance_tests}\\
+  Primer alata: \textit{Selenium}. 
 
 \section{Objasniti metod ekstremnog programiranja ,,Programiranje u paru``.}
   Metoda ,,Programiranje u paru`` (eng. ,,Pair programming``) podrazumeva da se delovi
@@ -1677,7 +1726,7 @@
     \item Pomažu pri refaktorisanju;
     \item Predstavljaju vid dokumentacije;
     \item Omogućavaju više uglova posmatranja koda;
-    \item Pomažu pri debagovanju (lakše pronalaženje i trajne provere);
+    \item Pomažu pri debagovanju;
   \end{enumerate}
 
 \section{Objasniti ulogu testova kao vida verifikacije softvera.}
@@ -1746,9 +1795,9 @@
   Biblioteka $CppUnit$ ima bogat skup makroa za proveru tvrdnji (assert) koji su laki za korišćenje.
   U okviru ove biblioteke se mogu grupisati testovi po nekom pravilu, praviti posebne klase
   za testiranje koda koje mogu da imaju neograničen broj grupa testova. U okviru tih klasa
-  možemo definisati podrazumevano ponašanje pre i posle testa (initialization/deinitialization).
+  možemo definisati podrazumevano ponašanje pre i posle testa \textit{(initialization/deinitialization)}.
   Takođe postoji mogućnost korisničkih definisanih poruka u slučaju pada testa. Za svaki tip tvrdnji
-  postoji ista verzija koja ima sufiks \textit{,,-\_MESSAGE``} i zahteva dodatni prvi argument za poruku. 
+  postoji ista verzija koja ima sufiks \textit{-,,\_MESSAGE``} i zahteva dodatni prvi argument za poruku. 
 
 \section{Koji su osnovni elementi koje programer pravi pri pravljenju testova uz primenu biblioteka CppUnit? Kako?}
   U okviru projekta se pravi novi cilj (program za ivršavanje testova). Može po jedan program za svaki
@@ -5022,7 +5071,7 @@ Primer: prozor - dekorateri.\\
     \item 3.1rc1 - kandidat za objavljivanje, predstoje samo popravke poznatih i 
           kasnije uočenih nedostataka i eventualno dodavanje nekih manjih funkcionalnosti 
           za koje se naknadno ustanovi da su neophodne;
-    \item 3.1rc2 - kadnidat za objavljivanje, predstoje samo popravke poznatih i 
+    \item 3.1rc2 - kandidat za objavljivanje, predstoje samo popravke poznatih i 
           kasnije uošenih nedostataka.
   \end{itemize}
   \textbf{Postupak numerisanja:} 
