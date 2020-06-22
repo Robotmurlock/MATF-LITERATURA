@@ -1611,7 +1611,7 @@ void protocol()
             \item Okvir stiže iz čvora A. Adresi čvora A se dodeljuje port koji služi
                   za kasnije preslikavanje.
             \item \underline{Problem: Skretnica ne zna koji port vodi ka čvoru D!}
-                  U ovakvim situacijama se skretnica ponaša kao HUB i šalje okvir svim ostalim
+                  U ovakvim situacijama se skretnica ponaša kao razvodnik i šalje okvir svim ostalim
                   čvorovima. 
             \item Čvorovi koji dobiju okvir od skretnice, a ne odgovara im adresa pošiljaoca,
                   jednostavno odbacuju okvir. Čvoru D odgovara adresa pošiljaoca i on šalje
@@ -1681,7 +1681,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                   se dobija od transportnog sloja. Taj podatak može da stane u par paketa, pa
                   se tako i šalje. Svaki od ovih paketa može da ima različitu putanju.
             \item \textbf{Virtuelna kola (Connection-Oriented Service):} Servis sa uspotavljenom
-                  vezom (kao fiksna telefonija). Paketi koji se šalju koristeći ovaj servis
+                  vezom (kao fiksna telefonija). Paketi, koji se šalju koristeći ovaj servis,
                   putuju istom putanjom koja je određena kada je uspostavljena virtuelna konekcija.
                   Prilikom uspostavljenja virtuelne veze svi usmerivači (ruteri) u okviru
                   putanje trebaju da imaju informaciju o toj putanji. Paketi sadrže kratak identifikator
@@ -1703,7 +1703,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \end{figure}
     \textbf{Elementi:}
     \begin{itemize}
-        \item \textbf{Version:} verzija ipv4 (češća) ili ipv4.
+        \item \textbf{Version:} verzija ipv4 (češća) ili ipv6.
         \item \textbf{IHL:} dužina zaglavlja.
         \item \textbf{Differentiated Services:} informacije o klasi servisa i zagušenju.
         \item \textbf{Total Length:} Ukupna dužina paketa (sa zaglavljem).
@@ -1736,7 +1736,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
 
     \newpage
     \subsection{Povezivanje različitih mreža (međumreža)}
-        Mreže mogu da se razlikuju u mnogo aspekata:
+        \noindent Mreže mogu da se razlikuju u mnogo aspekata:
         \begin{itemize}
             \item Tip servisa (datagrami, virtuelna kola);
             \item Adresiranje;
@@ -1774,7 +1774,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         konkretna adresa. Što je prefiks kraći, to je opseg adrese veći (manje specifičan prefiks).
         Najmanje specifičan prefike je dužine 0 tj. cela mreža (Internet).\\
 
-        \textbf{Stari sistem za grupisanje u klase fiksne dužine:}
+        \noindent \textbf{Stari sistem za grupisanje u klase fiksne dužine:}
         \begin{itemize}
             \item Klasa A, $2^{24}$ adresa.
             \item Klasa B, $2^{16}$ adresa.
@@ -1842,10 +1842,10 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \textbf{Kompromis vremenske i prostorne složenosti:} Kompaktnije tabele imaju podrazumevanije
     ponašanje (manje specifični prefiksi), zauzimaju manje prostora i manje su vremenski efikasne.
     Velike tabele su specifičnije (više specifični prefiksi) ponašanje, zauzimaju više prostora
-    i više su vremenski efikasnije.
+    i vremenski su efikasnije.
 
 \section{ARP i DHCP}
-    Dva problema koji se pojavljuju na mrežnom sloju su:
+    \noindent \textbf{Dva problema koji se pojavljuju na mrežnom sloju su:}
     \begin{itemize}
         \item Dodeljivanje IP adrese računaru u mreži (DHCP);
         \item i određivanje adrese u sloju veze (MAC) za ciljnu IP adresu (ARP).
@@ -1853,7 +1853,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
 
     Svaki računar u mreži ima jedinstvenu \textbf{MAC (Media Access Control) adresu} koja se nalazi
     na \textbf{NIC (Network Interface Controller)} kartici. To znači da se MAC dodeljuje hardverski svakom
-    računaru koji treba da koristi Internet usluge.
+    računaru koji treba da koristi internet usluge.
 
     \subsection{Dodeljivanje IP adrese (DHCP)}
         Svaki čvor u mreži mora da ima neku svoju IP adresu kako bi komunicirao na sloju mreže.
