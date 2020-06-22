@@ -1542,7 +1542,7 @@ void protocol()
         Najlakši način da se povežu čvorovi u mreži je da se koristi jedan dovoljno dugačak kanal
         preko kojeg čvorovi mogu da šalju okvire. Ovo rešenje donosi mnogo problema prilikom
         prekida na kanalu (nije lako locirati). \\
-        \indent Bolje rešenje se rešava koristeći razvodnik (hub). Razvodnik je kutija sa 
+        \indent Bolje rešenje se dobija koristeći razvodnik (hub). Razvodnik je kutija sa 
         više ulaza/izlaza preko koje mogu da se povezuju čvorovi. Funkcija i implementacija 
         razvodnika je jednostavna. Kada stigne neki okvir do njega on ga prosleđuje svim ostalim
         čvorovima koji su prikačeni na njega.
@@ -1551,7 +1551,7 @@ void protocol()
                 \includegraphics[width=80mm,height=40mm]{Slike/hab.png}
             \end{center}
         \end{figure}
-        \textbf{Prednosti:}
+        \noindent \textbf{Prednosti:}
         \begin{itemize}
             \item Značajno ušteđuje na količini materijala potrebno da se spoje čvorovi (potrebna 
                   manja ukupna dužina kanala mreže). 
@@ -1603,13 +1603,31 @@ void protocol()
                 \includegraphics[width=120mm,height=40mm]{Slike/skretnica_ucenje.png}
             \end{center}
         \end{figure}
-        Na jednom mreži mogu da se nalazi više skretnica i razvodnika. Svaka skretnica ima svoju
-        nezavisnu tabelu.
+
+        \noindent \textbf{Detaljno objašnjenje procesa sa slike:} 
+        \begin{itemize}
+            \item Inicijalno skretnica ima praznu tabelu.
+            \item Čvor A šalje okvir čvoru D (okvir sadrži adresu primaoca i pošiljaoca).
+            \item Okvir stiže iz čvora A. Adresi čvora A se dodeljuje port koji služi
+                  za kasnije preslikavanje.
+            \item \underline{Problem: Skretnica ne zna koji port vodi ka čvoru D!}
+                  U ovakvim situacijama se skretnica ponaša kao HUB i šalje okvir svim ostalim
+                  čvorovima. 
+            \item Čvorovi koji dobiju okvir od skretnice, a ne odgovara im adresa pošiljaoca,
+                  jednostavno odbacuju okvir. Čvoru D odgovara adresa pošiljaoca i on šalje
+                  odgovor čvoru A. 
+            \item Skretnici stiže okvir od čvora D. Adresi čvora D se dodeljuje port koji služi
+                  za kasnije preslikavanje. 
+            \item Skretnica prosleđuje okvir čvoru A.
+        \end{itemize}
+
         \begin{figure}[H]
             \begin{center}
                 \includegraphics[width=120mm,height=40mm]{Slike/skretnice_komplikovanija_mreza.png}
             \end{center}
         \end{figure}
+        Na jednoj mreži mogu da se nalaze više skretnica i razvodnika. Svaka skretnica ima svoju
+        nezavisnu tabelu.
 
     \subsection{Eliminacija petlji}
         U slučaju komplikovanih mreža može doći do petlji. Rešenje ovog problema je formiranje
