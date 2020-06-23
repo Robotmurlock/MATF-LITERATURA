@@ -230,7 +230,7 @@
                       (eng. end-to-end layer).
                 \item \textbf{Sloj sesije:} Omogućava različitim mašinama da uspostavljaju sesije između njih.
                 \item \textbf{Sloj prezentacije:} Odgovoran za sintaksu i semantiku informacija koje se prenose.
-                \item \textbf{Aplikativni sloj:} Pruža usluge krajnjim korisnicima.
+                \item \textbf{Aplikativni sloj:} Pruža usluge krajnjim korisnicima. Rad sa porukama.
             \end{enumerate}
         
         \subsubsection{TCP/IP model}
@@ -388,9 +388,9 @@
         \end{figure}
         \subsection{Mikrotalasi}
         \textbf{Mikrotalasi (Microwaves)} imaju veliki frekventni opseg i koriste se često za zatvorene namene
-        poput wifi, kao i za otvorene poput 3G i sateliti. Signal mikrotalasa slabi i reflektuje
+        poput \textit{wifi}, kao i za otvorene poput 3G i sateliti. Signal mikrotalasa slabi i reflektuje
         se od objekata okruženja. Jačina varira od udaljenosti, sabiranja signala, itd\dots
-        \subsection{svetlost}
+        \subsection{Svetlost}
         Svetlost kao talas se može koristiti kao komunikacioni medijum, ali to je više za hrabre
         koji vole avanture.
         \subsection{Žičani i bežični prenos}
@@ -429,8 +429,8 @@
             \end{center}
         \end{figure}
         \subsection{Geostacionarni sateliti (GEO)}
-            Ovi sateliti orbitiraju 35km iznad fiksne lokacije. Mikrostanice VSAT (Very Small 
-            Aperture Terminals) dobijaju i šalju signal ka centralnoj stanici HUB koja služi 
+            Ovi sateliti orbitiraju 35km iznad fiksne lokacije. Mikrostanice \textbf{VSAT (Very Small 
+            Aperture Terminals)} dobijaju i šalju signal ka centralnoj stanici HUB koja služi 
             za komunikaciju između VSAT mikrostanica. Signali se šalju uz pomoć GEO satelita.
             Primer: emitovanje televizijskog programa.
             \begin{figure}[H]
@@ -2438,7 +2438,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \noindent Pošiljalac baferiše najviše W segmenata dok ne stignu potvrde za njih:
         \begin{itemize}
             \item \textbf{LFS (Last Frame Sent):} Poslednji poslat segment.
-            \item \textbf{LAR (Last Frame Received):} Poslednji potvrđen segment pre koga su svi potvrđeni.
+            \item \textbf{LAR (Last ACK Received):} Poslednji potvrđen segment pre koga su svi potvrđeni.
         \end{itemize}
         Pošiljalac šalje segmente sve dok važi: $LFS - LAR \leq W$
         \begin{figure}[H]
@@ -3019,6 +3019,12 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \end{center}
         \end{figure}
 
+        Nekada se koristi i hijearhija proksija ukoliko se to isplati. Vrlo često je jedan
+        proksi sasvim dovoljan posrednik. Ukoliko se koristi hijearhija proksija,
+        proksi koji je niži u hijearhiji koristi usluge proksija koji je viši u hijearhiji
+        tj. proksi koji je viši u hijearhiji kešira podatke za proksi koji je niži u
+        hijearhiji.
+
 \section{CDN (Content Delivery Networks)}
     \textbf{CDN (Content Delivery Networks)} predstavlja dodatnu optimizaciju za efikasniju 
     isporuku sadržaja koji se često koristi. Umesto da klijent traži kopiju tražene stranice,
@@ -3039,7 +3045,10 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \end{figure}
     Kopije se mogu postaviti geografski ciljano i može se svesti na upotrebu DNS-a.
     DNS za određivanje adrese može da daje različite odgovore različitim klijentima. Svakom
-    Klijentu se daje IP adresa najbliže kopije.
+    Klijentu se daje IP adresa najbliže kopije.\\
+
+    Većina kompanija ne pravi svoje CDN, već koristi servise provajdera. Najpoznatiji CDN
+    provajder je \textit{Akamai}.
 
 \section{P2P}
     \textbf{P2P (Peer-To-Peer)} mreža za deljenje dokumenata predstavlja alternativu za CDN,
@@ -3059,11 +3068,12 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \end{itemize}
     \textbf{Izazovi P2P:}
     \begin{itemize}
-        \item \textbf{Podsticaj za učešće čvorova: Zašto bi čvorovi pomagali jedni drugima?}\\
-              Čvor isporučuje i dobavlja sardžaj. Čvor preuzima da bi pomogao sebi i šalje
+        \item \textbf{Podsticaj za učešće čvorova: Zašto bi čvorovi pomagali jedni drugima?}
+              Čvor isporučuje i dobavlja sadržaj. Čvor preuzima da bi pomogao sebi i šalje
               da bi pomogao drugima. ,,Ja ću poslati tebi, ako ti pošaljes meni..``.
-        \item \textbf{Decentralizacija: Kako se pronalizi sadržaj bez centralnog registra (indeksa)?}\\
-              Čvor mora da nauči gde se nalazi sardžaj. Za to se koriste \textbf{distribuirane heš
+        \item \textbf{Decentralizacija: Kako se pronalizi sadržaj bez centralnog registra (indeksa)?}
+              Ne postoji \textit{URL} preko kojeg možemo pristupiti podacima kao u klasičnom slučaju.
+              Čvor mora da nauči gde se nalazi sadržaj. Za to se koriste \textbf{distribuirane heš
               tabele tj. DHT (Distributed Hash Tables)}. DHT koriste algoritme za rad sa distribuiranim
               indeksom. Indeks je distribuiran preko svih čvorova. Indeks za traženi sadržaj daje
               spisak svih čvorova koji ga traže. Svaki čvor ima pristup indeksu.
@@ -3094,6 +3104,14 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                 \includegraphics[width=120mm,height=60mm]{Slike/p2p2.png}
             \end{center}
         \end{figure}
+        \noindent \textbf{Neke činjenice:}
+        \begin{itemize}
+            \item Čvorovi koji imaju sadržaj ili žele da ga preuzmu se povezuju i započinju 
+                  razmenu\dots
+            \item Delovi koji se šalju su obično nasumično odabrani. Ako bi se slalo redom,
+                  mogućnost trgovine bi se značajno smanjila.
+            \item Obustavlja se saobraćaj prema čvorovima koji ne sarađuju.
+        \end{itemize}
 
 
 
