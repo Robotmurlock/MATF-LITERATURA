@@ -1907,7 +1907,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \subsection{Protokol ICMP}
         Operacije nad mrežom su praćene od strane rutera. Ako ruter primeti neku grešku prilikom
         prosleđivanja paketa, onda se taj slučaj prijavljuje pošiljaocu putem \textbf{ICMP (Internet 
-        Control Message Protocol) protokola}. Protokol ICMP se takođe koristi za testiranje Interneta. 
+        Control Message Protocol) protokola}. Protokol ICMP se takođe koristi za testiranje Interneta
+        (primer: \textit{ping}). 
         Mogu se definisati razni tipovi poruka. Svaka ICMP poruka se šalje preko paketa. Problematičan
         paket se odbacuje. \\
         \indent Paket ICMP sadrži tip greške, kod i kontrolni zbir. Postoji indikator kojim
@@ -1921,7 +1922,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \newpage
     \subsection{NAT tehnika}
         Povezivanje računara iz lokalne mreže na spoljnu mrežu (primer: Internet) se vrši preko
-        \textbf{NAT (Network Address Translation)} tehnike. Protokol IPv4 omogućava par milijardni 
+        \textbf{NAT (Network Address Translation)} tehnike. NAT se izvršava u ruterima.
+        Protokol IPv4 omogućava par milijardni 
         ($2^{32}$) dostupnih adresa, što nije dovoljno. Nestašicom IPv4 adresa je motivisan NAT.\\
         \indent NAT održava tabelu preslikavanja unutrašnjih u spoljašnje (i obrnuto) adrese.
         To preslikavanje je zapravo IP+TCP port informacija. Portovi su ovom slučaju neophodni
@@ -2011,12 +2013,14 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \subsection{Rutiranje sa najkraćim putevima (najmanjim troškom)}
         \textbf{Princip optimalnosti:} Ako se čvor C nalazi na najkraćem putu od A do B, onda
         je deo tog puta od A do C najkraći put od čvora A do čvora C i deo tog puta od C do B 
-        je najkraći put od čvora C do čvora B. Posledica ovog principa: Unija optimalnih 
+        je najkraći put od čvora C do čvora B. \\
+        \indent \underline{Posledica principa optimalnosti:} Unija optimalnih 
         puteva u grafu čini drvo. Ovo
         drvo (graf) se naziva \textbf{,,sink tree``}. Drvo ne mora da bude jedinstveno tj. moguće je
-        da postoji više optimalnih puteva od A do B. Ako se uključe i duplikati,u slučaju
+        da postoji više optimalnih puteva od A do B. Ako se uključe i duplikati, u slučaju
         da ima više optimalnih puteva od čvora A do čvora B, onda se
-        dobija uopštenija struktura tj. aciklični graf (DAG). Teoretski, pošto je graf optimalnih 
+        dobija uopštenija struktura tj. aciklični graf (DAG - Directed Acyclic Graph). Teoretski, 
+        pošto je graf optimalnih 
         puteva drvo, onda se može očekivati da svaki paket bude prosleđen konačan broj puta tj. 
         ima konačan broj \textbf{,,hopova``}, jer ne postoje ciklusi. \\
         \indent Model se može modelirati jednostavnije kao neusmereni graf (paketi idu u oba
@@ -2041,7 +2045,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \item \textbf{Algoritam:} 
                   \begin{itemize}
                       \item Inicijalizuje se tabela udaljenosti tako da su svi čvorovi 
-                            beskonačno udaljeni sem korena $root$ (početni čvor) tj. čvora od kojeg 
+                            beskonačno udaljeni, sem korena $root$ (početni čvor) tj. čvora od kojeg 
                             se gleda rastojanje (smatra se da je rastojanje čvora od samog sebe nula).
                             Ako tabela ima N čvorova, onda treba da ima N-1 ,,puteva``
                             beskonačne dužine i jedan ,,put`` dužine 0.
@@ -2051,7 +2055,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                             najbližeg neposećenog čvora $root$. Tada se ažurira njihovo rastojanje
                             po formuli: \\
                             $d_{min}(s_i) = min(d_{min}(s_i), d_{min}(root) + d(root, s_k))$, \\
-                            gde je $d_{min}(node)$ trenutno najkraće rastojanje do čvora $node$, a 
+                            gde je $d_{min}(node)$ trenutno najkraće rastojanje od korena do čvora $node$, a 
                             $d(src, dest)$ rastojanje čvora $src$ do čvora $dest$ (težina grane). 
                       \item Neka je $node$ sledeći čvor koji je najbliži korenu od svih neposećenih čvorova.
                             Ažuriramo udaljenosti do suseda $s_1, s_2, \dots, s_k$ sledećom formulom: \\
@@ -2106,7 +2110,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     mnogo duplikata i to relativno brzo (eksponencijalno). Zbog toga se paketima dodeljuje životni vek po broju
     hopova. Paket inicijalno ima K preostalih hopova, gde se svakim prosleđivanjem ovaj broj
     dekrementira (umanjuje za jedan). Paket se odbacuje kada broj preostalih hopova postane 0. \\
-    \indent Koristi se lista rednih brojeva koja čuva redne brojeve paketa koji su pristigli već u taj
+    \indent Koristi se lista koja čuva redne brojeve paketa koji su već                     pristigli u taj
     čvor. Paket se odbacuje ako je njegov redni broj u listi. Takođe je moguće omogućiti 
     i ARQ kako bi plavljenje bilo pouzdanije. 
 
@@ -2119,7 +2123,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
               identifikuje svoje susede. Čvor šalje kroz svaku vezu \underline{HELLO paket} koji primalac
               vraća nazad sa informacijom o njegovom globalno jedinstvenom imenu. 
         \item \textbf{Postavljanje težina grana:} Postavljaju se odgovarajuće težine za
-              veze u okvir mreže. Jedan način da se odrede težine je da se računa težina koja je obrnuto
+              veze u okviru mreže. Jedan način da se odrede težine je da se računa težina koja je obrnuto
               proporcionalna u odnosu na protok (veći protok ima manju cenu tj. manji protok
               ima veću cenu).
         \item \textbf{Pravljenje paket stanja (LSP):} Potrebno je sada da se napravi paket 
@@ -2133,10 +2137,14 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
               \end{figure}
         \item \textbf{Razmena paketa:} Osnovna ideja je da se koristi plavljenje za deljenje
               paketa. Da bi se razlikovale nove informacije od starih, čuva se uređeni par
-              [identifikator paketa, redni broj]. Ako stigne novi paket, on se beleži i šalje
-              se svim ostalim susedima (sem onom koji je prvobitno poslao paket). Ako je paket duplikat,
-              on se odbacuje. Ako je redni broj paketa manji od najvećeg viđenog rednog broja do sad,
-              opet se odbacuje. \\
+              [identifikator paketa, redni broj]:
+              \begin{itemize}
+                \item Ako stigne novi paket, on se beleži i šalje
+                      se svim ostalim susedima (sem onom koji je prvobitno poslao paket). 
+                \item Ako je paket duplikat, on se odbacuje. 
+                \item Ako je redni broj paketa manji od najvećeg viđenog rednog broja do sad,
+                      opet se odbacuje. 
+              \end{itemize}
 
               \indent Ova tehnika ima mane. Kada ruter otkaže on gubi sve informacije (redni broj pre
               svega). Ako se opet priključi onda je njegov redni broj 0, zbog čega se svi njegovi
@@ -2296,6 +2304,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \item \textbf{UDP length:} Dimenzija segmenta (8 do 65515 bajtova);
         \item \textbf{UDP checksum:} Suma za proveru greške.
     \end{itemize}
+
     UDP ne vrši kontrolu toka, kontrolu zagušenja ili retransmisiju u slučaju lošeg segmenta.
     Zbog toga se UDP koristi kod aplikacija kojima nije preterano bitna pouzdanost poruka.
     Primer (server-klijent): Klijent šalje kratku poruku serveru i očekuje kratak odgovor. Ako
@@ -2311,6 +2320,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \includegraphics[width=100mm,height=50mm]{Slike/udp2.png}
         \end{center}
     \end{figure}
+    
     Koriste se UDP baferi (redovi čekanja) u slučaju da više paketa stiže sa mrežnog sloja. Svaki
     port ima svoj odvojeni bafer. Kapacitet bafera može da se definiše u okviru operativnog sistema
     ili u okviru programa:
@@ -2343,6 +2353,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                 \includegraphics[width=100mm,height=60mm]{Slike/uspostava_konekcije1.png}
             \end{center}
         \end{figure}
+        
         Prethodni primer predstavlja idealnu situaciju. Nažalost, neke stvari mogu da krenu naopako.
         Slučaj kada stižu zakasneli duplikati: Redni brojevi će se razlikovati, pa će sa obe strane
         duplikati biti odbijeni.
@@ -2426,8 +2437,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \subsection{Pošiljalac}
         \noindent Pošiljalac baferiše najviše W segmenata dok ne stignu potvrde za njih:
         \begin{itemize}
-            \item \textbf{LFS:} Poslednji poslat segment.
-            \item \textbf{LAR:} Poslednji potvrđen segment pre koga su svi potvrđeni.
+            \item \textbf{LFS (Last Frame Sent):} Poslednji poslat segment.
+            \item \textbf{LAR (Last Frame Received):} Poslednji potvrđen segment pre koga su svi potvrđeni.
         \end{itemize}
         Pošiljalac šalje segmente sve dok važi: $LFS - LAR \leq W$
         \begin{figure}[H]
@@ -2469,7 +2480,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     ali prozor se ne pomera dok aplikativni sloj ne prihvati te segmente. Ako je pristiglo K
     segmenata onda bafer ima mesta za još W-K segmenata. Bafer je popunjen kada je W = K. Da bi se
     izbegao gubitak na strani primaoca, primalac šalje pošiljaocu dostupno stanje bafer: 
-    $WIN = W - K$. Pošiljalac tada koristi WIN vrednost kao efiktivnu informaciju o veličini prozora.
+    $WIN = W - K$. Pošiljalac tada koristi WIN vrednost kao efektivnu informaciju o veličini prozora.
     \begin{figure}[H]
         \begin{center}
             \includegraphics[width=120mm,height=80mm]{Slike/kontrola_toka.png}
@@ -2478,7 +2489,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
 
 \section{Retransmisija i prilagodljive pauze (tajmauti) na transportnom sloju}
     Tajmeri za retransmisiju idejno funkcionišu slično kao na sloju veze. Segment se šalje opet
-    kada tajmout istekne. Ovaj tajmer se naziva \textbf{RTO (Retransmission TimeOut)}. Očekivano
+    kada tajmer istekne. Ovaj tajmer se naziva \textbf{RTO (Retransmission TimeOut)}. Očekivano
     kašnjenje na sloju veze se meri u mikrosekundama i lako je predvideti zbog malog odstupanja. Na
     transportnom sloju za TCP je ovo odstupanje mnogo veće i teže predvideti kašnjenje
     (slika: levo je sloj veze, desno je transportni sloj):
@@ -2526,7 +2537,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \end{figure}
 
 \section{TCP, svojstva, zaglavlje, realizacija kliznih prozora, uspostava i prekid veze (specifično). }
-    (Napomena: uspostava i prekid veze su obrađeni u prethodnom pitanju gde piše uopšteno)\\
+    \textbf{Napomena:} Uspostava i prekid veze su obrađeni u prethodnom pitanju gde piše uopšteno!\\
 
     \noindent \textbf{Svojstva:}
     \begin{itemize}
@@ -2585,7 +2596,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \end{figure}
 
 \section{Zagušenje na transportnom sloju, opis problema i mehanizma za rešavanje (AIMD).}
-    Kontrola zagušenja je posao mora da obalja i mrežni i transportni sloj (zajednička odgovornost).
+    Kontrola zagušenja je posao moraju da obavljaju i mrežni i transportni sloj (zajednička odgovornost).
     Zagušenje se dešava na ruterima i to detektuje mrežni sloj, ali to zagušenje na mrežnom sloju
     pravi transportni sloj. Zbog toga je potrebno kontrolisati koliko se paketa ubacuje u mrežu
     od strane transportnog sloja. \\
@@ -2626,7 +2637,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \textbf{AIMD (Additive Increase Multiplicative Decrease)} je kontrolni mehanizam koji omogućava dostizanje dobre alokacije. Ideja je jednostavna,
         pošiljaoci aditivno povećavaju brzinu slanja podataka dok mreža ne postane zagušena, a ako
         je mreža zagušena, onda se brzina slanja podataka umnoženo smanjuje. Primer: Mreža ima
-        dva čvora koji korise ovu tehniku. Prvi čvor predstavlja X-osu, a drugi čvor predstavlja
+        dva čvora koji koriste ovu tehniku. Prvi čvor predstavlja X-osu, a drugi čvor predstavlja
         Y-osu: 
         \begin{figure}[H]
             \begin{center}
@@ -2728,27 +2739,33 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         22 osnovna TLD (.com, .edu, .gov, .mil, .org, .net, ...) i preko 250 nacionalnih TLD (.rs,
         , .us, ...). \textbf{Zone} su osnov za dalju distribuciju. Zona je neprekidno parče 
         prostora imena i može da se deli na podzone (delegira). \\
-        \indent Primer: matf.bg.ac.rs: ,,rs`` je TLD koji se odnosi na Srbiju, ,,ac`` se odnosi na 
-        univerzitete u Srbiji, ,,bg`` se odnosi na Beograd tj. univerzitete Beograda i ,,matf``
-        se odnosi na Matematički fakultet. \textbf{Napomena:} Čita se sa desna na levo. 
+        \noindent \underline{Primer:} matf.bg.ac.rs: 
+        \begin{itemize}
+            \item ,,rs`` je TLD koji se odnosi na Srbiju;
+            \item ,,ac`` (,,ac.rs``) se odnosi na univerzitete u Srbiji;
+            \item ,,bg`` (,,bg.ac.rs``) se odnosi na Beograd tj. univerzitete Beograda;
+            \item i ,,matf`` (,,matf.bg.ac.rs``) se odnosi na Matematički fakultet. 
+        \end{itemize}  
+        \textbf{Napomena:} Čita se sa desna na levo. 
 
     \subsection{DNS slogovi (DNS records)}
         Svaki domen (list, TLD ili unutrašnji) se čuva kao \textbf{DNS slog} u DNS bazi podataka. 
         Za list je prirodno pronaći IP adresu kao jedan od slogova, ali
-        tu mogu da se nađu i drugi tipovi slogova. Elementi:
+        tu mogu da se nađu i drugi tipovi slogova. \\
+        \noindent \textbf{Elementi:}
         \begin{itemize}
             \item \textbf{Domain Name:} Domen (može više slogova da postoji za isti domen).
             \item \textbf{Time To Live:} Koliko je slog stabilan. Za stabline slogove obično
                   stoji 86400 (dani), a za nestabilne obično stoji 60 (minuti).
             \item \textbf{Class:} Uglavnom se koristi IN (Internet information).  
             \item \textbf{Type:} Postoje različiti tipovi:
-                  \begin{figure}[H]
-                      \begin{center}
-                          \includegraphics[width=120mm,height=50mm]{Slike/dns2.png}
-                      \end{center}
-                  \end{figure}
             \item \textbf{Value:} Domen ili niska u zavisnosti od tipa sloga.
         \end{itemize}
+        \begin{figure}[H]
+            \begin{center}
+                \includegraphics[width=120mm,height=50mm]{Slike/dns2.png}
+            \end{center}
+        \end{figure}
         \begin{figure}[H]
             \begin{center}
                 \includegraphics[width=120mm,height=80mm]{Slike/dns3.png}
@@ -2760,21 +2777,29 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     Ako lokalni server ne zna traženo ime od ranije (nije keširano) on mora da traži odgovor od korenih
     servera domena, a onda nastavlja pretragu niže u hijearhiji. Ovaj proces se naziva 
     \textbf{,,name resolution``}.\\
-    \indent Primer: Zahteva se IP adresa domena robot.cs.washington.edu od strane flits.cs.vu.nl.
-    U slučaju da odgovor nije već keširan, mora da se pokrene niz upita. Prvi korak je kontakt
-    lokalnog servera imena, cs.vu.nl (query 1). Tada cs.vu.nl postavlja upite od vrha hijearhije do dna. 
-    Prvi upit se postavlja korenom serveru a.root-servers.net (query 2). Ovakvih korenih servera
-    ima 13 (od a.root-servers.net do m.root-servers.net). 
-    Koreni server verovatno ne zna adresu, ali zna ime servera koji ima .edu domen (query 3),
-    preko kojeg može da se nastavi pretraga. Tada lokalni server šalje upit .edu serveru imena (query 4).
-    Server imena .edu mu ne daje konkretan odgovora ali mu daje korisne informacije za dalju
-    pretragu pomoću UW servera imena (query 5). Lokalni server imena šalje upit UW serveru imena (query 6).
-    server imena UW vraća odgovor gde dalje da se vrši pretraga tj. preko UWCS servera imena(query 7).
-    Lokalni server imena šalje upit UWCS serveru imena (query 8). Konačno dobija potpun odgovor (query 9)
-    sa IP adresom. 
+
+    \underline{Primer:} Zahteva se IP adresa domena robot.cs.washington.edu 
+    od strane flits.cs.vu.nl.
+    U slučaju da odgovor nije već keširan, mora da se pokrene niz upita. 
+    \begin{itemize}
+        \item Prvi korak je kontakt lokalnog servera imena, cs.vu.nl (query 1). 
+              Tada cs.vu.nl postavlja upite od vrha hijearhije do dna. 
+        \item Prvi upit se postavlja korenom serveru a.root-servers.net (query 2). 
+              Ovakvih korenih servera ima 13 (od a.root-servers.net do m.root-servers.net). 
+        \item Koreni server verovatno ne zna adresu, ali zna ime servera koji ima .edu domen (query 3),
+              preko kojeg može da se nastavi pretraga. 
+        \item Tada lokalni server šalje upit .edu serveru imena (query 4).
+        \item Server imena .edu mu ne daje konkretan odgovora, ali mu daje korisne informacije 
+              za dalju pretragu pomoću UW servera imena (query 5). 
+        \item Lokalni server imena šalje upit UW serveru imena (query 6).
+        \item Server imena UW vraća odgovor gde dalje da se vrši pretraga tj. preko UWCS servera 
+              imena(query 7).
+        \item Lokalni server imena šalje upit UWCS serveru imena (query 8). 
+        \item Konačno dobija potpun odgovor (query 9) sa IP adresom. 
+    \end{itemize}
     \begin{figure}[H]
         \begin{center}
-            \includegraphics[width=120mm,height=60mm]{Slike/dns4.png}
+            \includegraphics[width=100mm,height=60mm]{Slike/dns4.png}
         \end{center}
     \end{figure}
 
@@ -2829,7 +2854,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         balansiranju protoka).
 
 \section{HTTP protokol: preuzimanje veb dokumenta}
-    Iz ugla korisnika, Veb se sastoji iz kolekcije saržaja u obliku veb stranica. Korisnik
+    Iz ugla korisnika, Veb se sastoji iz kolekcije sadržaja u obliku veb stranica. Korisnik
     može da prelazi sa jedne stranice na drugu stranicu (ova ideja se naziva \textbf{,,hypertext``}).
     Stranice se prikazuju pomoću veb pregledača (browser) čiji je posao da korisniku prikaže stranicu.
     U okviru stranice postoje veze preko kojih se može preći na drugu stranicu (\textbf{,,hyperlink``}).
@@ -2838,7 +2863,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \includegraphics[width=120mm,height=60mm]{Slike/http1.png}
         \end{center}
     \end{figure}
-    \indent \textbf{HTTP (HyperText Transfer Protocol)} je zadužen za dobavaljenje stranica 
+
+    \textbf{HTTP (HyperText Transfer Protocol)} je zadužen za dobavljanje stranica 
     sa nekog servera. HTTP koristi TCP protokol sa transportnog sloja i obično koristi port 80.
     U ovoj razmeni podataka imamo dva čvora: Klijenta koji koristi pregledač za slanje HTTP
     zahteva i Veb server koji šalje HTTP odgovor sa odgovarajućim statusom (da li je došlo do greške).
@@ -2847,7 +2873,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \includegraphics[width=80mm,height=30mm]{Slike/http2.png}
         \end{center}
     \end{figure}
-    \textbf{Tipovi dokumenata:}
+    \noindent \textbf{Tipovi dokumenata:}
     \begin{itemize}
         \item \textbf{Statička stranica (Static page):} Ovaj tip dokumenta je uvek isti.
         \item \textbf{Dinamička stranica (Dynamic page):} Ovaj tip dokumenta je menja vremenom 
@@ -2859,9 +2885,9 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \textbf{URL (Uniform Resource Locator):} Svaka stranica na Vebu ima svoj URL koji se 
         sastoji iz tri dela:
         \begin{enumerate}
-            \item Protokol: Koji se protokol koristi (http, https, ftp, ...).
-            \item Domen: Ime servera na kojem se stranica nalazi.
-            \item Relativna putanja do specifičnog dokumenta u okviru stranice.
+            \item \underline{Protokol:} Koji se protokol koristi (http, https, ftp, ...).
+            \item \underline{Domen:} Ime servera na kojem se stranica nalazi.
+            \item \underline{Relativna putanja do specifičnog dokumenta} u okviru stranice.
         \end{enumerate}
         \textbf{Opšti oblik:} [PROTOCOL]://[DOMEN]/[RELATIVNA\_PUTANJA\_DO\_DOKUMENTA]\\
         Primer: http://www.cs.washington.edu/index.html\\
@@ -2878,7 +2904,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \item Ako je za prikaz stranice potrebno još dokumenata, onda se na isti način
                   dobavljaju ostale stranice/dokumenti sa odgovarajućim URL-om koji se koristi 
                   u okviru stranice (primer: umetnuti youtube snimak);
-            \item Pretraživač prikazuje stranicu korisiku koju je dobio kao odgovor;
+            \item Pretraživač prikazuje stranicu korisniku, koju je dobio kao odgovor;
             \item Prekida se TCP konekcija (osim ako nema još zahteva u kraćem periodu).
         \end{enumerate}
 
@@ -2908,6 +2934,11 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                 \includegraphics[width=80mm,height=40mm]{Slike/http4.png}
             \end{center}
         \end{figure}
+
+        \textbf{Napomena:} ,,GET`` zahtev može da se koristi za dodavanje podataka
+        na veb dokument, gde se podaci definišu kao parametri URL-a. Ovakav način
+        dodavanja podataka na veb dokument se uglavnom ne praktikuje.\\
+
         Uz odgovor se vraćaju kodovi koji označavaju status zahteva. Ukoliko je sve prošlo
         kako treba, onda se očekuje kod 200 tj. 2xx.
         \begin{figure}[H]
@@ -2915,7 +2946,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
                 \includegraphics[width=100mm,height=40mm]{Slike/http5.png}
             \end{center}
         \end{figure}
-        Dodatna zaglavlja zahteva ili odgovora:
+        
+        \noindent \textbf{Dodatna zaglavlja zahteva ili odgovora:}
         \begin{figure}[H]
             \begin{center}
                 \includegraphics[width=100mm,height=40mm]{Slike/http6.png}
@@ -2935,7 +2967,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \includegraphics[width=120mm,height=80mm]{Slike/http7.png}
         \end{center}
     \end{figure}
-    Protokol HTTP/1.1 podržava dugoročnu vezu tj. moguće je uspostaviti TCP vezu, poslati
+
+    \textbf{Protokol HTTP/1.1} podržava dugoročnu vezu tj. moguće je uspostaviti TCP vezu, poslati
     zahtev i dobiti odgovor i onda opet poslati zahtev i dobiti odgovor par puta pre nego što se
     TCP veza prekine (slika: b). Ova strategija se naziva 
     \textbf{ponovna upotreba veze (connection reuse)}. Takođe je moguće slati paralelno zahteve
@@ -2947,7 +2980,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     \end{itemize}
     \textbf{Ostali načini za poboljšanje PLT:}
     \begin{itemize}
-        \item Smanjivanje poslatog sadržaja: Manje slike, gzip kompresija.
+        \item Smanjivanje poslatog sadržaja: Manje slike, \textit{gzip} kompresija.
         \item Pomeranje sadržaja bliže korisniku: CDN.
     \end{itemize}
     
@@ -2956,7 +2989,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         Korisnici često zahtevaju stranice koje su već koristili. Ove stranice mogu da imaju
         razne slike i slične dokumente koji su skupi za prenos. Veoma je rasipnički da se 
         ovi podaci šalju svaki put kada se zahteva data stranica. \\
-        \indent Proces čuvanja stranica koje su već korišćene za kasniji se naziva \textbf{keširanje
+        \indent Proces čuvanja stranica koje su već korišćene za kasnije se naziva \textbf{keširanje
         (caching)}. Pretraživač čuva određenje, već posećene stranice za kasnije (koristi dodatnu
         memoriju, kompromis vremenske i memorijske složenosti). Ovim se značajno 
         smanjuje kašnjenje u mreži. \\
@@ -3001,7 +3034,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     (donja slika, 6 hopova):
     \begin{figure}[H]
         \begin{center}
-            \includegraphics[width=120mm,height=80mm]{Slike/cdn2.png}
+            \includegraphics[width=120mm,height=60mm]{Slike/cdn2.png}
         \end{center}
     \end{figure}
     Kopije se mogu postaviti geografski ciljano i može se svesti na upotrebu DNS-a.
@@ -3019,7 +3052,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \includegraphics[width=120mm,height=60mm]{Slike/p2p1.png}
         \end{center}
     \end{figure}
-    \textbf{Cilj P2P je isporuka sadržaja bez centralizovanih mehanizama:}
+    \noindent \textbf{Cilj P2P je isporuka sadržaja bez centralizovanih mehanizama:}
     \begin{itemize}
         \item Efikasno se ponaša i sa povećanjem broja čvorova.
         \item Može postići i visoku pouzdanost.
