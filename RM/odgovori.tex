@@ -1185,24 +1185,22 @@ void receiver()
 \end{lstlisting} 
 
 \section{Protokol kliznih prozora u sloju veze, „1-bitni“, „vrati se N“, „selektivno ponavljanje“. }
-
-    \subsection{Metoda ,,piggybacking``}
-        Prethodni protokoli su prenosili okvire samo u jednom smeru, gde pošiljalac šalje 
-        okvir primaocu i onda primalac šalje prazan ACK okvir nazad. U slučaju dvosmerne komunikacije
-        bi bio potreban dupli simpleks kanal za dvosmernu komunikaciju. Bolja ideja je da se
-        koristi metoda \textbf{,,šlepanje`` (,,piggybacking``)}. Ova metoda podrazumeva da umesto da se odmah šalje
-        prazan ACK okvir za potvrdu, sačeka (neko vreme) da se spremi okvir koji bi svakako trebalo da bude
-        poslat i zakači ACK broj na njega. Koristeći ovu metodu ostvaruje se mogućnost dvosmerne
-        komunikacije koristeći jedan kanal. Međutim, ovo stvara nove probleme. \\
-        \indent Neka postoje dva čvora u komunikacija na jednom kanalu tj. prvi čvor i drugi čvor.
-        Oba čvora mogu da šalju i primaju okvire. Primenjuje se ,,piggybacking``. Situacija je sledeća:
-        Prvi čvor je poslao okvir drugom čvoru, i drugom čvoru je stigao ispravan okvir. Pošto
-        se koristi ,,piggybacking``, drugi čvor treba da zakači ACK na okvir koji treba da se
-        svakako pošalje prvom čvoru. Ako drugi čvor u nekom vremenskom intervalu ne treba
-        da šalje okvire nazad (zajedno sa ACK), onda prvom čvoru može da istekne brojač (tajmer), pri
-        čemu će duplikat biti poslat. U tom slučaju drugi čvor mora poslati prazan ACK okvir. Pitanje 
-        je koliko dugo treba da čeka drugi čvor na novi okvir (treba da stigne paket od mrežnog sloja za
-        novi okvir) koji treba da pošalje pre nego što odluči da ipak pošalje prazan ACK okvir.
+    Prethodni protokoli su prenosili okvire samo u jednom smeru, gde pošiljalac šalje 
+    okvir primaocu i onda primalac šalje prazan ACK okvir nazad. U slučaju dvosmerne komunikacije
+    bi bio potreban dupli simpleks kanal za dvosmernu komunikaciju. Bolja ideja je da se
+    koristi metoda \textbf{,,šlepanje`` (,,piggybacking``)}. Ova metoda podrazumeva da umesto da se odmah šalje
+    prazan ACK okvir za potvrdu, sačeka (neko vreme) da se spremi okvir koji bi svakako trebalo da bude
+    poslat i zakači ACK broj na njega. Koristeći ovu metodu ostvaruje se mogućnost dvosmerne
+    komunikacije koristeći jedan kanal. Međutim, ovo stvara nove probleme. \\
+    \indent Neka postoje dva čvora u komunikacija na jednom kanalu tj. prvi čvor i drugi čvor.
+    Oba čvora mogu da šalju i primaju okvire. Primenjuje se ,,piggybacking``. Situacija je sledeća:
+    Prvi čvor je poslao okvir drugom čvoru, i drugom čvoru je stigao ispravan okvir. Pošto
+    se koristi ,,piggybacking``, drugi čvor treba da zakači ACK na okvir koji treba da se
+    svakako pošalje prvom čvoru. Ako drugi čvor u nekom vremenskom intervalu ne treba
+    da šalje okvire nazad (zajedno sa ACK), onda prvom čvoru može da istekne brojač (tajmer), pri
+    čemu će duplikat biti poslat. U tom slučaju drugi čvor mora poslati prazan ACK okvir. Pitanje 
+    je koliko dugo treba da čeka drugi čvor na novi okvir (treba da stigne paket od mrežnog sloja za
+    novi okvir) koji treba da pošalje pre nego što odluči da ipak pošalje prazan ACK okvir.
 
     \subsection{Protokol kliznih prozora u sloju veze (opšta priča)}
         Pošiljalac ima na raspolaganju nekoliko ($W$) uzastopnih okvira koje može da pošalje. Koristi
@@ -2122,9 +2120,25 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         čvor B ne može znati da li se on sam nalazi na tom putu.
         \begin{figure}[H]
             \begin{center}
-                \includegraphics[width=120mm,height=40mm]{Slike/brojanje_do_beskonacnosti.png}
+                \includegraphics[width=120mm,height=60mm]{Slike/brojanje_do_beskonacnosti.png}
             \end{center}
         \end{figure}
+
+        \noindent \underline{Primer:} Neka je dat jednostavan graf sa slike\dots
+        \begin{figure}[H]
+            \begin{center}
+                \includegraphics[width=100mm,height=40mm]{Slike/brojanje_do_beskonacnosti2.png}
+            \end{center}
+        \end{figure}
+        \begin{itemize}
+            \item Prekida se veza između čvora A i B. Čvor B zna za prekid, ali čvor C ne zna
+                  za prekid, jer nije sused.
+            \item Nakon nekog vremena, čvor C šalje svoju DV tabelu čvoru B. Čvor B 
+                  vidi da ,,postoji`` veza između čvora C i A, i ažurira svoju tabelu.
+            \item Nakon nekog vremena (x2), čvor B šalje svoju DV tabelu čvoru C. Čvor
+                  C vidi da je ,,veza između A i B`` ažurirana i ažurira svoju tabelu.
+            \item \dots
+        \end{itemize}
 
 \section{Plavljenje (Flooding)}
     Svim čvorovima se emituje poruka pomoću tehnike \textbf{plavljenja (flooding)}. Jednostavan mehanizam 
