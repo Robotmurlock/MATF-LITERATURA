@@ -696,25 +696,34 @@ na sloju veze. }
         \item Proverava da li je došlo do greške tokom transmisije;
         \item Vodi računa o brzini protoka (ako je primalac sporiji od pošiljaoca).
     \end{itemize}
+
+    Sloj veze je obično realizovan delom na mrežnoj kartici, a drugim delom na nivou
+    operativnog sistema.
     \begin{figure}[H]
         \begin{center}
-            \includegraphics[width=120mm,height=50mm]{Slike/sloj_veze1.png}
+            \includegraphics[width=80mm,height=50mm]{Slike/slojevi_softver_hardver.png}
         \end{center}
     \end{figure}
 
     \textbf{Servisi koje sloj veze nudi mrežnom sloju:}
     \begin{itemize}
         \item \textbf{Unacknowledged connectionless service: } Slanje nezavisnih okvira bez provere
-              da li je stigao ispravan okvir do primaoca.
+              da li je stigao ispravan okvir do primaoca. Primer: Eternet.
         \item \textbf{Acknowledged connectionless service: } Slanje nezavisnih okvira sa proverom
-              da li je stigao ispravan okvir do primaoca.
+              da li je stigao ispravan okvir do primaoca. Primer: WiFi
         \item \textbf{Acknowledged connection-oriented service: } Uspostavlja se veza pre slanja niza
-              okvira, gde se vodi računa za svaki okvir da li je stigao do primaoca.
+              okvira, gde se vodi računa za svaki okvir da li je stigao do primaoca. Retko se koristi.
     \end{itemize}
 
 \section{Uokvirivanje u sloju veze}
     U teoriji uokvirivanje je potpuno nevidljivo fizičkom sloju. Ipak u praksi fizički sloj
-    pomaže u identifikaciji okvira.\\
+    pomaže u identifikaciji okvira.
+
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=120mm,height=50mm]{Slike/sloj_veze1.png}
+        \end{center}
+    \end{figure}
     
     \textbf{Brojanje bajtova:}  Okvir započinjemo sa poljem o njegovoj dužini. U slučaju greške na
     polju o njegovoj dužini dolazi do neusaglašavanja i ceo tok se poremeti.
@@ -2126,7 +2135,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
               veze u okviru mreže. Jedan način da se odrede težine je da se računa težina koja je obrnuto
               proporcionalna u odnosu na protok (veći protok ima manju cenu tj. manji protok
               ima veću cenu).
-        \item \textbf{Pravljenje paket stanja (LSP):} Potrebno je sada da se napravi paket 
+        \item \textbf{Pravljenje paket stanja (LSP - Link State Package):} Potrebno je 
+              sada da se napravi paket 
               u kojem će biti smeštene informacije koje su sakupljene u prethodna dva koraka.
               Paket sadrži identifikator pošiljaoca, starost i listu suseda (sa cenom prelaska).
               Primer (Paketi svih čvorova):
@@ -2160,7 +2170,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
               se izračunali optimalni putevi. 
     \end{enumerate}
 
-    \textbf{Poređenje sa DV algoritmom:} 
+    \noindent \textbf{Poređenje sa DV algoritmom:} 
     \begin{itemize}
         \item LS ima bolju konvergenciju od DV-a, jer je plavljenje brzo.
         \item DV ima bolju skalabilnost od LS-a, jer čvorovi računaju rešenje potproblema,
@@ -2270,6 +2280,13 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \item \textbf{RECEIVE:} Prihvatanje podataka preko konekcije. 
             \item \textbf{CLOSE:} Prekida se konekcija.
         \end{itemize}
+
+    \noindent \textbf{Dijagram aktivnosti:}
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=80mm,height=80mm]{Slike/socket_api.png}
+        \end{center}
+    \end{figure}
 
     \subsection{Portovi}
         Procesi se identifikuju uređenom trojkom: IP adresa, protokol, port). Portovi su 16-biti
@@ -2416,6 +2433,9 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
             \end{center}
         \end{figure}
 
+        U praksi je ovaj problem znatno lakši, jer klijent i server uglavnom unapred znaju
+        pravila komunikacije. Server može da očekuje kada će klijent prekinuti vezu.
+
 \section{Protokoli kliznih prozora}
     \textbf{Zašto je potrebno da se i na transportnom sloju koriste klizni prozori?} 
     U okviru mreže paketi mogu da se izgube ili pokvare. Zbog toga se vrši retransmisija i šalju 
@@ -2455,7 +2475,8 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \end{itemize}
 
     \subsection{Primalac}
-        \textbf{Varijanta ,,Vrati se N``:} Tada je LAS redni broj poslednjeg segmenta prosleđenog
+        \textbf{Varijanta ,,Vrati se N``:} Tada je \textbf{LAS (Last Ack Sent)} redni broj 
+        poslednjeg segmenta prosleđenog
         aplikativnom sloju. Kada stigne novi ispravan segment (redni broj LAS+1), on ga prihvati, 
         prosledi aplikativnom sloju, inkrementira LAS i pošalje potvrdu nazad. Ako segment nije
         ispravan, on se odbacuje. Pošiljalac u ovom slučaju treba da ima jedan tajmer.
@@ -2517,7 +2538,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         \indent \textbf{$SRTT_{n+1} = \alpha \cdot SRTT_{n} + (1-\alpha) \cdot RTT_{n+1}$}\\
         Preko faktora $\alpha$ se definiše koliko se brzo zaboravlja stari RTT (primer:
         $\alpha = 0.9$, obično se uzima $\alpha = \frac{7}{8}$). \\
-        \indent \underline{Problem:} velike promene varijanse. Rešenje: Postavi se tajmer da zavisi od varijanse
+        \indent \underline{Problem: velike promene varijanse.} Rešenje: Postavi se tajmer da zavisi od varijanse
         i od apsolutne razlike RTT i SRTT: \\ 
         \indent \textbf{$SVAR_{n+1} = \beta \cdot SVAR_{n} + (1 - \beta) \cdot |RTT_{n+1}-SRTT_{n+1}|$}\\
         (obično se uzima $\beta = \frac{3}{4}$)\\
