@@ -1308,6 +1308,19 @@ void protocol()
                 \includegraphics[width=120mm,height=45mm]{Slike/prozori4.png}
             \end{center}
         \end{figure} 
+
+        \textbf{Napomena:} Opseg brojeva sekvenci mora biti barem duplo veći od dimenzije bafera!
+        Neka je dimenzija prozora $W=7$, a opseg brojeva $S=8$. Nakon što pošiljalac uspešno
+        pošalje okvire sa identifikatorima od 0 do 6, primalac pomeri prozor od 7 do 7 i 
+        onda 0 do 5 (ciklično). Ako se neki ACK od 0 do 5 ne vrati nazad pošiljaocu, a
+        pošiljalac pošalje duplikat, mrežni sloj će dobiti pogrešan paket i time ceo
+        protokol propada.
+
+        \begin{figure}[H]
+            \begin{center}
+                \includegraphics[width=120mm,height=45mm]{Slike/selektivno_ponavljanje.png}
+            \end{center}
+        \end{figure} 
     
 \section{MAC podsloj: uloga, alokacija kanala, ALOHA protokol.}
     Mrežni kanali se dele u dve grupe. Prva grupa su \textbf{,,tačka-na-tačku`` (eng. ,,point-to-point``)}
