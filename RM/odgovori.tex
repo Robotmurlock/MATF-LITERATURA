@@ -633,7 +633,8 @@
     \textbf{Šenonov kapacitet:} Broj razlučivih nivoa signala zavisi od odnosa jačine signala i 
     jačine šuma $SNR = \frac{S}{N}$ \textbf{(SNR - Signal Noise Ratio, odnos šum-signal)}. 
     Vrednost SNR-a može jako da varira, zbog čega se on računa u decibilima tj. $SNR_{dB} = 10 \log_{10}{\frac{S}{N}}$. 
-    Šenonov kapacitet je: $C = B\cdot \log_2{(1+\frac{S}{N})}$ b/s. Broj razlučivih signala se dobija 
+    Šenonov kapacitet (maksimalan broj bitova po sekundi) je: 
+    $C = B\cdot \log_2{(1+\frac{S}{N})}$ b/s. Broj razlučivih signala se dobija 
     iz odnosa: $\frac{S+N}{N}=1+\frac{S}{N}$. \textbf{Napomena:} Da bismo duplirali Šenonov kapacitet nije
     dovoljno duplirati protok, jer je šum zavisan od protoka. \\
     \indent Kod žičanih komunikacija se može projektovati ciljni SNR i samim tim i ciljni prenos. Kod
@@ -1225,8 +1226,14 @@ void receiver()
         \end{itemize}
         Veći prozori omogućavaju protočnu obradu za efikasniju potrebu kanala. Što je veći
         broj prozora to je efikasnija upotreba. Najneefikasniji slučaj je za $W=1$ (posebno
-        na dužim kanalima). Optimalno W zavisi od BDP-a. Cilj je da važi $W \geq 2BDP+1$ radi
-        što bolje iskorišćenosti.
+        na dužim kanalima). \\
+        \indent Optimalno W zavisi od BDP-a. Cilj je da važi $W \geq 2BD+1$ radi
+        što bolje iskorišćenosti, gde je \textbf{$BD = \frac{BDP}{FS}$}, gde je \textbf{FS - Frame Size} 
+        tj. dimenzija jednog okvira u bitovima. Vrednost BD predstavlja maksimalni broj okvira 
+        na kanalu u
+        jednom trenutku, a ,,+1`` deo je tu zato što se ACK neće poslati dok ne stigne ceo okvir.
+        \indent Možemo definisati \textbf{efikasnost veze (Link Utilization)} kao:\\
+        \indent $link$ $utilization \leq \frac{w}{1+2BD}$
 
     \subsection{Protokol ,,1-bitni``}
         Nema odvojenih algoritama pošiljaoca i primoaca, jer je sad dvosmerni kanal i čvorovi
@@ -1893,12 +1900,12 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
 
         \noindent \textbf{Detaljniji proces DHCP protokola (three way handshake):}
         \begin{enumerate}
-            \item Čvor emituje paket celoj mreži (specijalna adresa za emitovanje je 255.255.255.255).
-            \item DHCP server odgovara čvoru ciljano sa predloženom IP adresom. Ova adresa se bira
+            \item \textbf{DISCOVER:} Čvor emituje paket celoj mreži (specijalna adresa za emitovanje je 255.255.255.255).
+            \item \textbf{OFFER:} DHCP server odgovara čvoru ciljano sa predloženom IP adresom. Ova adresa se bira
                   na osnovu njegove MAC adrese i slobodnih IP adresa.
-            \item Čvor emituje odgovor da mu odgovara predložena IP adresa (može biti više
+            \item \textbf{ACCEPT:} Čvor emituje odgovor da mu odgovara predložena IP adresa (može biti više
                   DHCP servera).
-            \item DHCP server potvrđuje i briše adresu iz spiska slobodnih IP adresa.
+            \item \textbf{ACK:} DHCP server potvrđuje i briše adresu iz spiska slobodnih IP adresa.
         \end{enumerate}
         \begin{figure}[H]
             \begin{center}
@@ -1910,7 +1917,10 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     
     \subsection{Određivanje adrese u sloju veze za ciljnu IP adresu (ARP)}
         Sloj veze podataka ne ume da radi sa IP adresama. Potrebno je preslikati IP adrese 
-        na adresu u sloju veze. Proces:
+        na adresu u sloju veze. Protokol koji vraća informaciju o MAC adresi na osnovu
+        IP adrese se naziva \textbf{ARP (Address Resolution Protocol)}. Postoji i
+        \textbf{RAPR (Reverse Address Resolution Protocol)} koji vršu inverznu funkciju. \\
+        \noindent \underline{Proces:}
         \begin{enumerate}
             \item Čvor koji hoće da sazna adresu emituje ciljnu IP adresu.
             \item Onaj ko ima tu IP adresu mu vraća odgovor sa svojom adresom na sloju veze.
@@ -2321,15 +2331,15 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
         Klijent obično koristi nasumične portove koje bira operativni sistem (ne moraju biti
         opšte poznati, jer ih niko ne zna). Primeri:
         \begin{itemize}
-            \item \textbf{FTP:} prenos podataka.
-            \item \textbf{SSH:} udaljeni pristup.
-            \item \textbf{SMTP:} slanje i primanje elektronske pošte.
-            \item \textbf{HTTP:} pristup WWW.
-            \item \textbf{POP-3:} primanje elektronske pošte.
-            \item \textbf{IMAP:} slanje elektronske pošte.
-            \item \textbf{HTTPS:} sigurni HTTP.
-            \item \textbf{RTSP:} prenos tokova u realnom vremenu.
-            \item \textbf{IPP:} deljenje stampača.
+            \item \textbf{FTP (20, 21):} prenos podataka.
+            \item \textbf{SSH (22):} udaljeni pristup.
+            \item \textbf{SMTP (25):} slanje i primanje elektronske pošte.
+            \item \textbf{HTTP (80):} pristup WWW.
+            \item \textbf{POP-3 (110):} primanje elektronske pošte.
+            \item \textbf{IMAP (143):} slanje elektronske pošte.
+            \item \textbf{HTTPS (443):} sigurni HTTP.
+            \item \textbf{RTSP (543):} prenos tokova u realnom vremenu.
+            \item \textbf{IPP (631):} deljenje stampača.
         \end{itemize}
 
 \section{UDP}
