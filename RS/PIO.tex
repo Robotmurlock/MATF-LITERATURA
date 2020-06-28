@@ -11,6 +11,7 @@
 \usepackage{tocloft}
 \usepackage{float}
 \addtolength{\cftsecnumwidth}{10pt}
+\usepackage{wasysym}
 
 \usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} 
@@ -145,14 +146,15 @@
       A* q = &b;
     }\end{lstlisting}
 
-    Tri puta. Pri deklaracija promenljivih $a$, $b$ i $p$. Promenljive $c$ i $q$ su reference 
+    Tri puta tj. za pri deinicijalizaciji promenljivih $a$, $b$ i $p$. Promenljive $c$ i $q$ su reference 
     na objekte.
 
 \section{Šta su šabloni funkcija?}
     Šabloni funkcija predstavljaju specijalne funkcije koje rade sa generičkim tipovima. 
     Ukoliko nam je potrebno više verzija iste funkcije samo sa različitim tipom podataka ili klasa, 
     onda šablon funkcija može da zameni tu grupu funkcija. Takođe konstante mogu da budu generički 
-    parametri. U suštini šabloni nam omogućavaju generičko programiranje. Šabloni predstavljaju tip 
+    parametri. \\
+    \indent U suštini šabloni nam omogućavaju generičko programiranje. Šabloni predstavljaju tip 
     statičkog polimorfizma tj. polimorfizam koji se obrađuje tokom kompilacije.\cite{cppref_templates}
 
 \section{Kako se pišu i koriste šabloni funkcija?}
@@ -171,7 +173,7 @@
 
 \section{Napisati šablon funkcije koja računa srednju vrednost dva broja za bilo koji numerički tip.}
 \begin{lstlisting}
-  template< typename T {
+  template< typename T >
     T avg( T x, T y ){
     return (x+y)/2;
   }\end{lstlisting}
@@ -218,11 +220,12 @@
   Virtuelnce funkcije (virtuelne metode) su metode neke klase koje uz sebe imaju ključnu reč ,,virtual``.
   U C++-u podrazumevano povezivanje je statičko. Ako želimo da koristimo dinamički polimorfizam, potrebno je
   naglasiti to ključnom reči ,,virtual`` i pozivati taj metod preko pokazivača ili reference na objekat.\\
-  \indent U Java-i su sve nestatičke metode implicitno virtuelne što donosi neke svoje olakšice. Mana 
+  \indent U Java-i su sve nestatičke metode implicitno virtuelne, što donosi neke svoje olakšice. Mana 
   toga je efikasnost.
 
 \section{Šta je čisto virtuelna funkcija?}
-  U C++-u čisto virtuelna funkcija i apstraktna funkcija predstavljaju sinonime. Čisto virtuelna funkcija
+  U C++-u \underline{čisto virtuelna funkcija} i \underline{apstraktna funkcija} predstavljaju 
+  sinonime. Čisto virtuelna funkcija
   je funkcija koja nema svoju implementaciju u okviru klase. Klasa koja sadrži čisto virtuelnu funkciju
   je apstrakna klasa. Čisto virtuelnu metodu označavamo sa ,,$= 0$`` kao sufiks.
   Primer:
@@ -289,6 +292,7 @@
       \item Problematične kontrole interfejsa;
       \item Spor odziv;
       \item Nepouzdanost.
+      \item \dots
     \end{itemize}
     \item \textbf{Procedura korišćenja nije ostvariva/dobra u realnim uslovima:}
     \begin{itemize}
@@ -487,7 +491,7 @@
   \begin{itemize}
     \item Prototipovi obično odražavaju funkcionalne aspekte i elemente korisničkog interfejsa,   
           ali ne i unutrašnju strukturu softvera;
-    \item Posledica je da su samo delemično odgovarajući objektno orijentisanim metodologijama;
+    \item Posledica je da su samo delimično odgovarajući objektno orijentisanim metodologijama;
     \item Nedovoljno široko napravljen prototip i nedovoljno široko razmatranje prototipa mogu da 
           prikriju nedostatke u drugim aspektima IS;
     \item Previše pažnje posvećene prototipu preti da ,,naduva`` fazu njegove izrade.
@@ -560,9 +564,10 @@
   \begin{itemize}
     \item \textbf{Klasa} predstavlja skup objekata koji imaju isto ponašanje (isti skup metoda) 
           i isti skup atributa. 
-    \item \textbf{Objekat} predstavlja konkretan primerak klase. Skup metoda opisuje ponašanje objekta. 
-    \item \textbf{Metodi} su obično funkcije definisane u okviru neke klase. Atributi su polja klase 
-          i preko njih tj. njihovih vrednosti se opisuje trenutno stanje objekta.
+    \item \textbf{Metodi} su funkcije definisane u okviru neke klase. 
+          Skup metoda opisuje ponašanje objekta (klase). 
+    \item \textbf{Atributi} su polja klase. Trenutne vrednosti atributa 
+          opisuju trenutno stanje objekta. 
   \end{itemize}
 
 \section{Koji su osnovni koncepti na kojima počivaju tehnike objektno orijentisanih metodologija?}
@@ -570,9 +575,11 @@
     \item enkapsulacija
     \item interfejs
     \item polimorfizam
-    \item nasleđivanje: specijalizacija i generalizacija u hijearhiji klase. Smanjuje dupliran kod i
-          koristi se za dinamički polimorfizam.
+    \item nasleđivanje
   \end{itemize}
+
+  Nasleđivanje je specijalizacija i generalizacija u hijearhiji klasa. Smanjuje dupliran kod i
+  koristi se za dinamički polimorfizam.
 
 \section{Objasniti koncept enkapsulacije.}
   Ideja je da se podaci i funkcije koje rade sa tim podacima spoje u jednu klasu. Klasa se deli
@@ -588,9 +595,10 @@
   kojem se upotrebljava.
 
 \section{Objasniti koncept interfejsa.}
-  Klasa je opisana korisniku preko javnih metodima klase (plavi, javni deo kapsule). Korisnik 
+  Klasa je opisana korisniku preko javnih metoda klase (plavi, javni deo kapsule sa slike). Korisnik 
   interfejsa ne mora da zna implementaciju klase da bi je koristio. \\
-  Svrha je sakrivanje složenosti implementacije. Suština objekta je u njegovom ponašanju.\\
+  \indent Svrha interfejsa je sakrivanje složenosti implementacije. Suština objekta je 
+  u njegovom ponašanju.\\
   \textbf{Napomena:} Ako objekat ima više interfejsa, znači da ima više funkcija, pa je potrebno
   razmotriti njegovo razlaganje na više objekata.
 
@@ -598,23 +606,23 @@
   \noindent Poenta polimorfizma je da se jedan kod što više puta iskoristi. \\
   \textbf{Vrste:}
   \begin{itemize}
-    \item hijearhijski (dinamički): dobijen kombinacijom dinamičkog povezivanja i nasleđivanja;
-    \item parametarski (statički): šabloni;
-    \item implicitni: retki jezici ovo podržavaju.
+    \item \textbf{hijearhijski (dinamički):} dobijen kombinacijom dinamičkog povezivanja i nasleđivanja;
+    \item \textbf{parametarski (statički):} šabloni;
+    \item \textbf{implicitni:} retko koji jezici ovo podržavaju.
   \end{itemize}
   Pišemo apstrakniji kod koji ima veću upotrebljivost. \cite{catonmat_polymorphism}
 
 \section{Objasniti koncept nasleđivanja  i odgovarajuće odnose.}
   Nasleđivanje klase je ekvivalentno uvođenju jednosmerne parcijalno uređene 
   relacije "jeste" između klasa.\\
-  Klasa A ,,jeste`` klasa B akko svaki objekat klase A ima sve osobine koje imaju i objekti klase B.\\
+  \indent Klasa A ,,jeste`` klasa B akko svaki objekat klase A ima sve osobine koje imaju i objekti klase B.\\
   Ako A ,,jeste`` klasa B kaže se i da je:
   \begin{itemize}
     \item A ,,izvedena`` klasa iz B ili A ,,je potomak`` klase B
     \item B ,,osnovna`` klasa za A ili B ,,je predak`` klase A
   \end{itemize}
   Predstavlja osnovu za građenje hijerarhija klasa.\\
-  Svrha:
+  \underline{Svrha:}
   \begin{itemize}
     \item Nasleđivanje se koristi za eksplicitno označavanje sličnosti među klasama (objektima).
     \item Predstavlja osnovu za hijerarhijski polimor zam: ako se to može uraditi sa svakim objektnom klase B, 
@@ -671,10 +679,10 @@
 
 
 \section{Koje vrste dijagrama postoje u UML-u? Objasniti.}
-  Dijagrami se dele u tri grupe:
+  \noindent Dijagrami se dele u tri grupe:
   \begin{itemize}
     \item dijagrami ponašanja
-    \item dijagrami interakcije (može se gledati i kao podgrupa dijagram ponašanja)
+    \item dijagrami interakcije (može se gledati i kao podgrupa dijagrama ponašanja)
     \item strukturni dijagrami
   \end{itemize}
 
@@ -688,6 +696,12 @@
     \item Dijagram isporučivanja (deployment diagram)
     \item Dijagram paketa (package diagram)
   \end{enumerate}
+
+  Strukturni dijagrami opisuju statičku strukturu softverskog sistema i njegovih delova.
+  Različiti dijagrami mogu da imaju različit nivo apstraktnosti i mogu da odgovaraju
+  različitim fazama modeliranja i implementacije. Elementi strukturnih dijagrama nemaju
+  dodira sa konceptom protoka vremana ili povezanim
+  konceptima, kao što su tok komunikacije među objektima ili promene stanja objekata.
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama klasa?}
   Ilustruje elemente statičkog modela tj. klase, njihov sadržaj i međusobne odnose.
@@ -709,7 +723,7 @@
           ali ne važi obrnuto)
   \end{itemize}
   \textbf{Kako razlikovati asocijaciju, agregaciju i kompoziciju?}\\
-  Agregacija i kompozicija su specijalni slučajevi asocijacije. 
+  \indent Agregacija i kompozicija su specijalni slučajevi asocijacije. 
   Agregacija predstavlja odnos gde dete može da postoji bez roditelja (klase su čvorovi), 
   a kompozicija predstavlja odnos gde dete ne može da postoji bez roditelja.
   \begin{figure}[H]
@@ -742,7 +756,7 @@
     \item čvorove (primer: server) 
     \item softverske ili hardverske podsisteme
     \item međusobne veze tih podsistema
-    \item može da ilustruje zasupljenost komponenti u podsistemima.
+    \item može da ilustruje zastupljenost komponenti u podsistemima.
   \end{itemize}
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama paketa?}
@@ -763,8 +777,15 @@
     \item Dijagram aktivnosti (activity diagram)
     \item Dijagram stanja (state machine diagram)
     \item Dijagram slučajeva upotrebe (use case diagram) 
-          - u ove dijagrame se mogu ubrojati i dijagrami interakcije
   \end{enumerate}
+
+    Dijagrami ponašanja se bave dinamičkom prirodom softverskog sitema. Oni
+  opisuju ponašanje pojedinačnih objekata ili širih podsistema. Ponašanje se
+  predstavlja u kontekstu toka vremena, u obliku razmene poruka, toka komunikacije
+  ili toka promene stanja. \\
+  \indent Dijagrami interakcije su posebna podgrupa dijagrama ponašanja, ali se ponekad
+  razmatraju posebno. Razlikuju se od ostalih dijagrama ponašanja po tome što je na
+  njima vremenski tok opisan eksplicitnije nego na ostalim dijagramima.
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama aktivnosti?}
   Predstavlja poslovne procese višeg nivoa, tokove podataka i eventualno složene logičke elemente 
@@ -804,7 +825,8 @@
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama slučajeva upotrebe?}
   Predstavlja slučajeve upotrebe, aktere i njihove međusobne odnose. Ne prikazuje redosled
-  po kojem se koraci izvršavaju.\\
+  po kojem se koraci izvršavaju. Svaki slučaj upotrebe mora da bude popraćen tekstualnom
+  dokumentacijom. \\
   \textbf{Sadrži:}
   \begin{itemize}
     \item slučajeve upotrebe
@@ -830,7 +852,7 @@
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama komunikacije?}
   Predstavlja produženje dijagrama objekata gde su predstavljene interakcije između objekata.
-  Dijagram prikazuje objekte uz poruke koje oni šalju. Sadrži objekte, poruke i evetualno komentare.
+  Dijagram prikazuje objekte uz poruke koje oni šalju. Sadrži objekte, poruke i eventualno komentare.
   \begin{figure}[H]
     \begin{center}
         \includegraphics[width=100mm,height=60mm]{Slike/dijagram_komunikacije.png}
@@ -886,10 +908,10 @@
   se javljala proteklih godina.\\
   \indent \textbf{Gang of four}: Erich Gamma, Richard Helm, Ralph Johnson i John Vlissides su objavili
   knjigu ,,Design Patterns: Elements of Reusable Object-Oriented Software``, što je započelo 
-  koncepte o uzorcima projektovanja.
+  koncepte o uzrocima projektovanja.
 
 \section{Koji su osnovni elementi uzoraka za projektovanje? Objasniti ih.}
-  Svaki uzorak ima četiri bitna elementa:
+  \noindent Svaki uzorak ima četiri bitna elementa:
   \begin{itemize}
     \item Ime uzorka
     \item Problem
@@ -985,9 +1007,9 @@
   Klasifikacija uzoraka je važna. Daje nam standardna imena i definicije za tehnike koje koristimo. 
   Ako ne naučimo uzorke u softveru, nećemo biti u stanju da ih poboljšamo, i biće teže smisliti nove.
   \begin{itemize}
-    \item Gradivni (primer. Fabrika)
-    \item Strukturni (primer. Dekorator)
-    \item Uzorci ponašanja (primer. Posetilac)
+    \item \textbf{Gradivni} (primer. Fabrika)
+    \item \textbf{Strukturni} (primer. Dekorator)
+    \item \textbf{Uzorci ponašanja} (primer. Posetilac)
   \end{itemize}
 
 \section{Objasniti namenu gradivnih uzoraka za projektovanje.}
@@ -1059,8 +1081,9 @@
   \textbf{Uzorci za projektovanje koji nisu objašnjeni u okviru narednih pitanja, a opet mogu potencijalno da
           dođu na ispit:}
   \begin{itemize}
-    \item \textbf{Adapter:} Predstavlja specijalan objekat koji se koristi za komunikaciju dve klase (biblioteke) koje 
-          imaju nekompatiblne interfejse, gde je njegov zadatak da omogući njihovu komunikaciju. Primer: Napravljena
+    \item \textbf{Adapter:} Predstavlja specijalan objekat koji se koristi kao posrednik 
+          za komunikaciju između dve klase (biblioteke) koje 
+          imaju nekompatiblne interfejse. Primer: Napravljena
           je biblioteka koja predstavlja \textit{Scraper} za određene vrste \textit{XML} fajlova. Pored te biblioteke 
           postoji odlična biblioteka za vizuelizaciju statistika nad podacima, ali problem je što ona radi sa 
           \textit{JSON} podacima. Rešenje je da se koristi Adapter objekat koji prevodi \textit{XML} u \textit{JSON}
@@ -1144,6 +1167,7 @@
     \item Klasa želi da njena potklasa specizira objekte koje stvara.
     \item Klasa prenosi odgovornost na jednu od nekoliko pomoćnih potklasa.
   \end{itemize}
+
   \indent U Java-i se ovaj uzorak za projektovanje dosta koristi. Primer: $InetAddress$ je klasa koja
   reprezentuje IP protokol. Postoje dve verzije IP adresa: $ipv4$ i $ipv6$. Zbog toga postoje
   dve potklase klase $InetAddress$: $InetAddress4$ (za $ipv4$) i $InetAddress6$ (za $ipv6$). Umesto
@@ -1340,7 +1364,7 @@
   Agilni razvoj softvera (ARS) je familija metodologija nastala krajem 80-tih, početkom 90-tih.
   Naziv je oblikovan 2001. godine kada je formulisan \textbf{Manifest agilnog razvoja softvera}. 
   Agilni  razvoj softvera ima dosta sličnosti sa objektno orijentisanim metodologijama, ali sa
-  drugačijem pristupu planiranja. Uglavnom se pretpostavlja upotreba tehnika OO projektovanja i
+  drugačijem pristupom planiranja. Uglavnom se pretpostavlja upotreba tehnika OO projektovanja i
   programiranja. Propisuje skup principa tehnika za njihovo ostvarivanje. Promoviše dinamičan 
   i disciplinovan timski rad. Brzo se reaguje na svaku promenu u okruženju.
   \cite{agilemanifesto}\cite{ss_agile_manifesto}\\
@@ -1370,7 +1394,8 @@
 \section{Objasniti pretpostavku agilnog razvoja da su pojedinci i saradnja ispred procesa i alata.}
   Ima smisla staviti pojedince i saradnju ispred procesa i alata, jer su ljudi ti koji odgovaraju
   na zahteve posla i razvijaju procese. Ako procesi ili alati vode razvoj, onda su manje šanse 
-  da tim uspešno odgovori na promene ili ispoštuje zahteve klijenta. Komunikacija
+  da tim uspešno odgovori na promene ili ispošte zahtev klijenta. \\
+  \indent Komunikacija
   je primer gde može da se predstavi razlika između vrednovanja pojedinaca naspram vrednovanja
   procesa. U slučaju vrednovanja pojedinaca, komunikacija dolazi prirodno kada je potrebna, a u 
   slučaju vrednovanja procesa je komunikacija zakazana i zahteva konkretnu temu. \\
@@ -1396,7 +1421,8 @@
   Tradicionalno je promena smatrana kao dodatan trošak, zbog čega je izbegavana. Promene su 
   neizbežne i sigurno nastupaju, a pitanje je samo kada će nastupiti i koje će promene nastupiti.
   Zbog toga je bitno da razvojni tim bude sposoban da reaguje na promene. Takođe je potrebno da plan
-  bude fleksibilan kako bi se lako prilagodio tim promenama. Planiranje treba da se vrši na kraći
+  bude fleksibilan kako bi se lako prilagodio tim promenama. \\
+  \indent Planiranje treba da se vrši na kraći
   period, jer se detaljni planovi, iako su koristni, teško održavaju na dužem periodu. Naravno,
   vizija i glavni ciljevi su neophodni i bitno je da se zna šta se pravi (ipak, 
   ponekad se i oni menjaju).
@@ -1405,9 +1431,9 @@
   \begin{enumerate}
     \item Najviši prioritet je zadovoljiti klijenta kroz rano i neprekidno isporučivanje vrednog 
           softvera.
-    \item Treba uvek otvoreno prihvatani promene, čak i u kasnim fazama razvoja. Promene se uvažavaju 
+    \item Treba uvek otvoreno prihvatati promene, čak i u kasnim fazama razvoja. Promene se uvažavaju 
           kao sredstvo postizanja kvaliteta za klijenta.
-    \item Softver treba isporučivati često, od nekoliko nedelja do nekoliko meseca sa preferencom 
+    \item Softver treba isporučivati često, od nekoliko nedelja do nekoliko meseci sa prioritetom 
           na što kraćem periodu.
     \item Poslovni ljudi i razvijaoci moraju sarađivati svakodnevno na projektu.
     \item Zasnivati projekat na motivisanim pojedincima. Pružati im okruženje i potrebnu podršku
@@ -1474,7 +1500,7 @@
   šta klijent želi u okviru neke celine koju razvojni tim treba da implementira. Radi okvirnog
   planiranja potrebno je sagledati zahteve, ali ne i potpuno precizne elemente zahteva. Neophodno
   je znati gde i kakvih detalja ima, ali ne i same detalje (detalji se menjaju tokom vremena). 
-  Prve (grube) procene rokova i troškova služe samo za upravljanje prioriteta. Primer:
+  Prve, grube procene rokova i troškova služe samo za upravljanje prioriteta. Primer:
   \begin{figure}[H]
     \begin{center}
         \includegraphics[width=100mm,height=80mm]{Slike/korisnicka_prica.png}
@@ -1488,14 +1514,14 @@
   Metoda ,,Kratki ciklusi`` (eng. ,,Lifecycle``) podrazumevaju redovne iteracije (eng. Weekly Cycle) i 
   izdanja (eng. Quarterly Cycle, release).\\
   
-  \textbf{Iteracija:} Sinonim nedeljni ciklus već dosta govori o samom pojmu iteracija.
+  \textbf{Iteracija:} Sinonim, nedeljni ciklus, već dosta govori o samom pojmu iteracija.
   Iteracije su manji ciklusi koji traju relativno kratko, jednu-dve nedelje. 
   Iteracija počinje sa određivanjem budžeta i dužine trajanja na osnovu odabranih
   korisničkih celina (bira ih klijent uz konsultaciju sa razvojnim timom) koji bi trebalo 
   da budu urađeni u okviru te iteracije. Zadatak je da razvojni tim na kraju iteracije
   da klijentu deo softvera (rađen po prethodnom dogovoru) koji klijent može da testira.
 
-  \textbf{Izdanje:} Takođe sinonim, tromesečni ciklus dosta govori i samom pojmu izdanja.
+  \textbf{Izdanje:} Takođe sinonim, tromesečni ciklus, dosta govori i samom pojmu izdanja.
   Izdanje obuhvata nekoliko iteracija (primer: 6). Ovo se odnosi na neku značajniju celinu
   u odnosu na delove koji se obrađuju u okviru iteracija. Bitno je da klijent ostavi generalni
   plan koji predstavlja ,,Pogled na šumu`` programerima dok su oni na ,,drveću``. Sastoji 
@@ -1513,16 +1539,16 @@
 
 \section{Objasniti metod ekstremnog programiranja ,,Programiranje u paru``.}
   Metoda ,,Programiranje u paru`` (eng. ,,Pair programming``) podrazumeva da se delovi
-  softvera realizuju u paru (programera), gde dvoje ljudi sede jedan pored drugog za istom
+  softvera realizuju u paru programera, gde oni sede jedan pored drugog za istom
   mašinom (,,Dve glave su pametnije od jedne``). Jedan član tima piše kod, a drugi komentariše
-  i ispravlja kolegu ako je potrebno. \\
+  i ispravlja kolegu, ako je to potrebno. \\
   \indent Uloge se menjaju više puta. Istraživanja pokazuju da
-  se ovako značajno smanjuje broj grešaka, a greška koštaju, pa samim tim se smanjuje
+  se ovako značajno smanjuje broj grešaka, a greške koštaju, pa samim tim se smanjuje
   cena projekta. Ovo podrazumeva da pojedinci mogu da sarađuju. Bitno je naglasiti
   da specijalnost i dalje ostaje na pojedincima, ali su drugi ipak upoznati sa rezultatima.\\
-  \indent U okviru iteracije svaki član tima mora da radi sa svim članovima tima i da radi skoro na
-  svim delovima iteracije. Ovim se informacije veoma efikasno razmenjuju i svaki član tima je
-  upoznat sa svakim delom projekta.\\
+  \indent U okviru iteracije svaki član tima mora da radi sa svim ostalim članovima tima 
+  i da radi skoro na svim delovima jedne iteracije. Ovim se informacije veoma efikasno razmenjuju 
+  i svaki član tima je upoznat sa svakim delom projekta.
 
 \section{Objasniti metod ekstremnog programiranja ,,Razvoj vođen testovima``.}
   Metoda ,,Razvoj vođen testovima`` (eng. ,,Test-Driven Development) podrazumeva da razvijanje
@@ -1565,14 +1591,14 @@
   Jedini izuzetak za prekovremeni rad je poslednja nedelja izdanja: ,,Ako je tim dovoljno blizu
   cilja, \textit{sprint} je dopušten. \\
 
-  ,,Razvoj softvera nije \textit{sprint}, nego maraton.``  (R. Martin)\\
+  \textit{,,Razvoj softvera nije sprint, nego maraton.``}  (R. Martin)\\
 
   \textbf{Prednosti:} Bolji odnosu u timu, manja rasterećenost članova tima, manji broj grešaka i
   efikasnija iskorisćenost radnog vremena.
 
 \section{Objasniti metod ekstremnog programiranja ,,Otvoren radni prostor``.}
-  Metoda ,,Otvoreni radni prosto`` (eng. Open work space) podrazumeva da tim radi u jednoj
-  velikoj otvorenoj prostoriji, gde se na svakom stalo nalaze dve ili tri radne stanice, 
+  Metoda ,,Otvoreni radni prostor`` (eng. Open work space) podrazumeva da tim radi u jednoj
+  velikoj otvorenoj prostoriji, gde se na svakom stalno nalaze dve ili tri radne stanice, 
   par stolica, a na zidovima su table i panoi. Uobičajni ton je tiha komunikacija i svi mogu
   međusobno da komuniciraju. Iako u teoriji ova metoda zvuči loše, u praksi se pokazuje da znatno 
   poboljšava efikasnost.
@@ -1648,14 +1674,14 @@
   koja predstavlja viziju sistema kao celine. Iz metafore (ne)posredno potiču svi konkretni moduli
   i zahtevi. \\
   \begin{itemize}
-    \item Ako ne znamo šta želimo sa projektom, onda ne treba ni da ga razvijamo. \\
+    \item Ako ne znamo šta želimo sa projektom, onda ne treba ni da ga razvijamo. 
     \item Često se realizuje u vidu rečnika pojmova koji identifikuju najvažnije koncepte sistema 
           i problema koji bi on trebalo da reši.
   \end{itemize}
 
 \section{Šta je ,,Razvoj vođen testovima``?}
   Razvoj vođen testovima je stil vođenja razvoja koji kaže sledeću stvar: Ako treba nešto 
-  da se isprogramira, pre nego što se isprogramira, prvo se piše deo koda koji proverava
+  da se isprogramira, pre nego što se to isprogramira, piše se deo koda koji proverava
   da li taj kod radi kako treba. Prvo se pišu testovi, potom se piše kostur datog koda koji
   u početku ne radi (ne prolazi testove), ali omogućava da se kod prevede. Nakon toga se piše kod.\\
 
@@ -1726,7 +1752,7 @@
     \item Pomažu pri refaktorisanju;
     \item Predstavljaju vid dokumentacije;
     \item Omogućavaju više uglova posmatranja koda;
-    \item Pomažu pri debagovanju;
+    \item Pomažu pri debagovanju.
   \end{enumerate}
 
 \section{Objasniti ulogu testova kao vida verifikacije softvera.}
@@ -1792,10 +1818,11 @@
   \end{enumerate}
 
 \section{Opisati ukratko osnovne mogućnosti biblioteke CppUnit.}
-  Biblioteka $CppUnit$ ima bogat skup makroa za proveru tvrdnji (assert) koji su laki za korišćenje.
+  Biblioteka $CppUnit$ ima bogat skup makroa za proveru tvrdnji \textit{(assert)} koji su laki za korišćenje.
   U okviru ove biblioteke se mogu grupisati testovi po nekom pravilu, praviti posebne klase
   za testiranje koda koje mogu da imaju neograničen broj grupa testova. U okviru tih klasa
-  možemo definisati podrazumevano ponašanje pre i posle testa \textit{(initialization/deinitialization)}.
+  možemo definisati podrazumevano ponašanje pre i posle testa \textit{(initialization/deinitialization)},
+  koristeći metode \textit{(setUp()/tearDown())}.
   Takođe postoji mogućnost korisničkih definisanih poruka u slučaju pada testa. Za svaki tip tvrdnji
   postoji ista verzija koja ima sufiks \textit{-,,\_MESSAGE``} i zahteva dodatni prvi argument za poruku. 
 
@@ -1842,7 +1869,8 @@
     \item \textbf{CPPUNIT\_ASSERT\_THROW\_MESSAGE:} Tvrdi se da je dati izraz izbacio (throw) grešku datog tipa
           (sa porukom).
     \item \textbf{CPPUNIT\_ASSERT\_NO\_THROW:} Tvrdi se da dati izraz nije izbacio (throw) grešku datog tipa.
-    \item \textbf{CPPUNIT\_ASSERT\_NO\_THROW\_MESSAGE:} Tvrdi se da dati izraz nije izbacio (throw) grešku datog tipa
+    \item \textbf{CPPUNIT\_ASSERT\_NO\_THROW\_MESSAGE:} Tvrdi se da dati izraz nije izbacio 
+          (throw) grešku datog tipa
           (sa porukom). \cite{cppunit_asserts}
   \end{itemize} 
 
@@ -2015,7 +2043,7 @@
   (eng. Duplicate Code)\\
   \textbf{Simptomi:}
   \begin{itemize}
-    \item Dva dela koda su identična.
+    \item Dva dela koda su semantički identična.
   \end{itemize}
 
   \noindent \textbf{Uzrok:} 
@@ -2744,7 +2772,7 @@ uzroke i posledice imaju?}
           a ako nije, onda je potrebno dalje posmatrati.
     \item \textbf{Biti uzdržan:} Kad se uoči da se nešto dešava, potrebno je zastati i
           dobro sačekati sa reagovanjem dok se svi simptomi prikažu, kako se ne bi doneo
-          dvosmislen zaključak. U suprotnom je moguće da se radi o nagađanju i ragovanju
+          dvosmislen zaključak. U suprotnom je moguće da se radi o nagađanju i reagovanju
           na osnovu nagađanja.
     \item \textbf{Menjati i isprobavati jednu stvar:} Ako pokušaj popravke ili testiranja nije pomogao,
           prvo je potrebno da se programski kod vrati u prvobitno stanje, pa tek onda da se prave
@@ -2768,7 +2796,7 @@ uzroke i posledice imaju?}
           aktivnostima imaju veliki značaj za kasnije lokalizovanje u vremenu.
     \item \textbf{Važno je razumeti da svaki od detalja može biti značajan:} Pisani trag nikada nije
           suviše detaljan.
-    \item \textbf{Povezivati događaje:} Međusobnih povezivanjem simptoma i ishoda (uspešnih ili 
+    \item \textbf{Povezivati događaje:} Međusobnim povezivanjem simptoma i ishoda (uspešnih ili 
           neuspešnih) olakšava uočavanje uzroka problema.
     \item \textbf{Dnevnici sa tragovima izvršavanja su važni za testiranje:} Na primer,
           Ostavljanje tragova pri aktiviranju delova koda ili obavljanju određenih poslova
@@ -2845,8 +2873,8 @@ uzroke i posledice imaju?}
   \textbf{Unutrašnje tehnike i alati:} Sve ono što se ugrađuje u programski kod
   samo radi pomoći u prevenciji i otklanjanju grešaka (i testiranju).
   \begin{itemize}
-    \item Pravljenje pretpostavki (assert);
-    \item Ostavljanje tragova pri izvršavanju (trace);
+    \item Pravljenje pretpostavki \textit{(assert)};
+    \item Ostavljanje tragova pri izvršavanju \textit{(trace)};
     \item Interni opisi stanja;
     \item Komentarisanje značajnih odluka i mesta u kodu;
     \item Testiranje jedinica koda.
@@ -2858,12 +2886,12 @@ uzroke i posledice imaju?}
     \item Debager;
     \item Alati za praćenje verzije koda;
     \item Alati za podršku i praćenje komunikacije;
-    \item Alati za automatizovanje prevljenja dokumentacije;
+    \item Alati za automatizovanje pravljenja dokumentacije;
     \item ...
   \end{itemize}
 
 \section{Objasniti pisanje pretpostavki kao tehniku za prevenciju nastajanja bagova.}
-  Pretpostavke (asserts) su delovi koda koji tokom izvršavanja programa proveravaju da li su
+  Pretpostavke \textit{(assert)} su delovi koda koji tokom izvršavanja programa proveravaju da li su
   na datom mestu i u datom trenutku ispunjene neke pretpostavke koje obično važe. Pretpostavke 
   obično prekidaju ili privremeno obustavljaju izvršavanje koda sa odgovarajućim obaveštenjem.\\
   \indent Većina biblioteka ima različite oblike makroa $assert$ koji proverava da li je dati
@@ -2898,7 +2926,7 @@ int fact(int n)
 
   \textbf{Kada koristiti pretpostavke?} Pretpostavke mogu znatno da pogoršaju performanse
   sistema zbog čega se u verziji za isporučivanje izbacuju. Ponekad prilikom izvršavanja, kada program  
-  izbaci (throw) izuzetak (exception) kao posledica greške, nije uvek moguće uhvatiti (catch) tj. 
+  izbaci \textit{(throw)} izuzetak \textit{(exception)} kao posledica greške, nije uvek moguće uhvatiti \textit{(catch)} tj. 
   obraditi taj izuzetak. Tada jednostavno ne sme doći to takve greške. U tim slučajevima ima smisla 
   koristiti pretpostavke.\\
   \indent Izuzeci su za korisnike, a pretpostavke su za programere. Pretpostavke se koriste
@@ -2936,7 +2964,7 @@ void TRACE(const char* s){
   \end{itemize}
 
 \section{Objasniti testiranje jedinica koda kao tehniku za prevenciju nastanaka bagova.}
-  \noindent Pogledati pitanja: 
+  \noindent \underline{Pogledati pitanja:} 
   \begin{itemize}
     \item Šta može biti jedinica koda koja se testira? 
           \ref{q_sta_moze_biti_jedinica_koda_koja_se_testira};
@@ -2945,14 +2973,14 @@ void TRACE(const char* s){
   \end{itemize}
 
 \section{Navesti osnovne tehnike upotrebe debagera.}
-  \begin{itemize}
+  \begin{enumerate}
     \item Izvršavanje korak po korak;
     \item Postavljanje tačaka prekida (breakpoint) u kodu ili podacima;
     \item Praćenje vrednosti promenljivih;
     \item Praćenje lokalnih promenljivih;
     \item Praćenje stanja steka;
     \item Praćenje na nivou instrukcija i stanja procesora.
-  \end{itemize}
+  \end{enumerate}
 
 \section{Objasniti tehniku upotrebe debagera Izvršavanje korak po korak.}
   U izvršavanju korak po korak, korak može biti jedna linija izvornog koda ili jedna mašinska 
@@ -3221,7 +3249,7 @@ void TRACE(const char* s){
     };\end{lstlisting}
 
 \section{Objasniti sekvencijalnu koheziju u kontekstu razvoja softvera.}
-  Koehezija je \textbf{sekvencijalna kohezija} ako su elementi komponente projektovani 
+  Kohezija je \textbf{sekvencijalna kohezija} ako su elementi komponente projektovani 
   tako da izlaz jedne komponente predstavlja ulaz u drugu komponentu. Ne postoji puna
   funkcionalna zavisnost. Delovi sekvence potencijalno obavljaju različite poslove. Postoji
   potencijalno otvoren problem odgovornosti u odnosu na celovit posao. Ovaj tip kohezije
@@ -3247,7 +3275,7 @@ void TRACE(const char* s){
     \item Jedna odgovornost je podeljena na više komponenti.
   \end{itemize}
   Primer: Otvaranje datoteke, proveravanje ispravnosti, čitanje, ...\\
-  Primer: Pravljenje torte :)
+  Primer: Pravljenje torte $\smiley{}$
 
   \begin{lstlisting}
     class BakeCake
@@ -3343,7 +3371,7 @@ void TRACE(const char* s){
   \textbf{sprega logike}. Primeri:
   \begin{itemize}
     \item Komponente obavljaju različite delove istog posla.
-    \item Komponenta A pretpostavlja da implentacija metoda B::M(...) počiva na nekom
+    \item Komponenta A pretpostavlja da implementacija metoda B::M(...) počiva na nekom
           konkretnom algoritmu. Primer: A i B implementiraju komplementarne algoritme
           (kodiranje/dekodiranje, pisanje/čitanje, ...).
     \item Komponente dele pretpostavke o nekim konkretnim podacima. Primer: 
