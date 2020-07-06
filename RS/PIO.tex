@@ -855,17 +855,43 @@
   dokumentacijom. \\
   \textbf{Sadrži:}
   \begin{itemize}
-    \item slučajeve upotrebe
-    \item aktere
+    \item slučajeve upotrebe (obično se predstavljaju elipsama koje sadrže nazive)
+    \item aktere (obično se predstavljaju Čiča Glišama)
     \item pakete
     \item podsisteme
-    \item međusobne odnose
-  \end{itemize}
+    \item međusobne odnose:
+      \begin{itemize}
+        \item Odnos aktera i slučajeva u kojim učestvuju se 
+              predstavlja punom linijom bez dodataka kao što je 
+              strelica ili slično.
+        \item Odnosi između slučajeva upotrebe se označavaju isprekidanom
+              linijom sa strelicom i tipom stereotipa:
+              \begin{itemize}
+                \item \textit{include} - Slučaj obuhvata ceo slučaj prema kojem
+                      ide strelica;
+                \item \textit{extends} - Slučaj od koga ide strelica predstavlja
+                      moguće proširenje drugog slučaja, u vidu dodatka,
+                      ali ne i njegov obavezan deo.
+              \end{itemize}
+      \end{itemize}
+  \end{itemize} 
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=60mm,height=50mm]{Slike/slucaj_upotrebe_primer1.png}
+    \end{center}
+  \end{figure}
+  U Zavisnosti od nivoa dekompozicije sistema, slučajevi upotrebe mogu da budu
+  na višem ili nižem nivou apstrakcije. Pri predstavljanju konceptualnog nivoa
+  softvera teži se da se sa što manje slučajeva upotrebe opiše ceo sistem. Naravno, tada
+  su slučajevi upotrebe vrlo apstraktni i zapravo opisuju čitav model upotrebe sistema
+  od strane jedne vrste korisnika. Takvi slučajevi upotrebe se obično nazivaju poslovni
+  slučajevi upotrebe i vrlo često se teži da jedan korisnik učestvuje u samo jednom
+  slučaju upotrebe. Na primer, Student studira, Nastavnik podučava i sl.\\
   \begin{figure}[H]
     \begin{center}
         \includegraphics[width=100mm,height=60mm]{Slike/uml_slucaj_upotrebe.png}
     \end{center}
-  \end{figure} 
+  \end{figure}
 
 \section{Navesti dijagrame interakcija.}
   \begin{enumerate}
@@ -904,7 +930,9 @@
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama sekvenci?}
   Prikazuju interakcije objekata u kontekstu saradnje. Ovi dijagrami imaju akcenat na vremenu i
-  prikazuju redosled interakcija.\\
+  prikazuju redosled interakcija. Služi za opisivanje toka odvijanja slučaja upotrebe. 
+  Na najnižem nivou apstrakcije se može predstaviti implementacija do nivoa pozivanja
+  metoda, odnosno slanja poruka između objekata. \\
   \textbf{Sadrži:}
   \begin{itemize}
     \item aktere
