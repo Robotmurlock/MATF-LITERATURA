@@ -325,7 +325,7 @@
       \item Višestrani problemi.
     \end{itemize}
 
-\section{Koji su najcešci problemi na strani zainteresovanih lica (ulagača) pri razvoju softvera? 
+\section{Koji su najčešci problemi na strani zainteresovanih lica (ulagača) pri razvoju softvera? 
          Objasniti ukratko.}
     \begin{itemize}
       \item Nerealni ili nejasni ciljevi projekta;
@@ -335,7 +335,7 @@
       \item Otpor korisnika prema primeni novog softvera.
     \end{itemize}
 
-\section{Koji su najcešci problemi na strani razvijaoca pri razvoju softvera? Objasniti ukratko.}
+\section{Koji su najčešci problemi na strani razvijaoca pri razvoju softvera? Objasniti ukratko.}
     \begin{itemize}
       \item Slabo vođenje projekta;
       \item Neprecizna procena potrebnih resursa;
@@ -722,13 +722,39 @@
     \item zavisnost (Neka je A zavisna od B. Ako se klasa B menja, onda klasa A može zahtevati promene,
           ali ne važi obrnuto)
   \end{itemize}
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=120mm,height=75mm]{Slike/uml_klase.png}
+    \end{center}
+  \end{figure} 
   \textbf{Kako razlikovati asocijaciju, agregaciju i kompoziciju?}\\
   \indent Agregacija i kompozicija su specijalni slučajevi asocijacije. 
   Agregacija predstavlja odnos gde dete može da postoji bez roditelja (klase su čvorovi), 
   a kompozicija predstavlja odnos gde dete ne može da postoji bez roditelja.
+  Ukoliko se veza između objekta može ostvariti na više načina, onda je to
+  samo asocijacija. Primer: Oba objekta imaju reference jedan na drugog 
+  (uglavnom loša praksa).\\
+  \noindent \textbf{Dodatni elementi dijagrama klase:}
+  \begin{itemize}
+    \item \textbf{Ime odnosa:} Kratko objašnjena uloga veze objekata.
+    \item \textbf{Kardinalnost veze} Na liniji se takođe može naznačiti broj objekata koji
+          mogu da učestvuju u vezi.
+          Primer: Automobil sadrži četiri točkova. Kardinalnost ne mora 
+          biti konstantna, tj. može se predstaviti i nekim skupom (najčešće intervalom).
+    \item \textbf{Komentari:} Tekstualna dokumentacija povezana sa nekim objektom dijagrama.
+    \item \textbf{Stereotip:} Obično se navodi iznad imena klase u obliku ,,<<naziv>>``. 
+          Govori o tipu objekta. Primeri
+          \begin{itemize}
+            \item \textit{abstract} - apstraktna klasa;
+            \item \textit{entity} - trajni podatak;
+            \item \textit{auxiliary} - pomoćna klasa;
+            \item \textit{focus} - najvažnija klasa u dijagramu;
+            \item \dots
+          \end{itemize}
+  \end{itemize}
   \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=120mm,height=75mm]{Slike/uml_klase.png}
+        \includegraphics[width=90mm,height=60mm]{Slike/klasa_lista.png}
     \end{center}
   \end{figure} 
 
@@ -829,17 +855,43 @@
   dokumentacijom. \\
   \textbf{Sadrži:}
   \begin{itemize}
-    \item slučajeve upotrebe
-    \item aktere
+    \item slučajeve upotrebe (obično se predstavljaju elipsama koje sadrže nazive)
+    \item aktere (obično se predstavljaju Čiča Glišama)
     \item pakete
     \item podsisteme
-    \item međusobne odnose
-  \end{itemize}
+    \item međusobne odnose:
+      \begin{itemize}
+        \item Odnos aktera i slučajeva u kojim učestvuju se 
+              predstavlja punom linijom bez dodataka kao što je 
+              strelica ili slično.
+        \item Odnosi između slučajeva upotrebe se označavaju isprekidanom
+              linijom sa strelicom i tipom stereotipa:
+              \begin{itemize}
+                \item \textit{include} - Slučaj obuhvata ceo slučaj prema kojem
+                      ide strelica;
+                \item \textit{extends} - Slučaj od koga ide strelica predstavlja
+                      moguće proširenje drugog slučaja, u vidu dodatka,
+                      ali ne i njegov obavezan deo.
+              \end{itemize}
+      \end{itemize}
+  \end{itemize} 
+  \begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=60mm,height=50mm]{Slike/slucaj_upotrebe_primer1.png}
+    \end{center}
+  \end{figure}
+  U Zavisnosti od nivoa dekompozicije sistema, slučajevi upotrebe mogu da budu
+  na višem ili nižem nivou apstrakcije. Pri predstavljanju konceptualnog nivoa
+  softvera teži se da se sa što manje slučajeva upotrebe opiše ceo sistem. Naravno, tada
+  su slučajevi upotrebe vrlo apstraktni i zapravo opisuju čitav model upotrebe sistema
+  od strane jedne vrste korisnika. Takvi slučajevi upotrebe se obično nazivaju poslovni
+  slučajevi upotrebe i vrlo često se teži da jedan korisnik učestvuje u samo jednom
+  slučaju upotrebe. Na primer, Student studira, Nastavnik podučava i sl.\\
   \begin{figure}[H]
     \begin{center}
         \includegraphics[width=100mm,height=60mm]{Slike/uml_slucaj_upotrebe.png}
     \end{center}
-  \end{figure} 
+  \end{figure}
 
 \section{Navesti dijagrame interakcija.}
   \begin{enumerate}
@@ -878,7 +930,9 @@
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama sekvenci?}
   Prikazuju interakcije objekata u kontekstu saradnje. Ovi dijagrami imaju akcenat na vremenu i
-  prikazuju redosled interakcija.\\
+  prikazuju redosled interakcija. Služi za opisivanje toka odvijanja slučaja upotrebe. 
+  Na najnižem nivou apstrakcije se može predstaviti implementacija do nivoa pozivanja
+  metoda, odnosno slanja poruka između objekata. \\
   \textbf{Sadrži:}
   \begin{itemize}
     \item aktere
@@ -4077,7 +4131,7 @@ Primer: prozor - dekorateri.\\
           međuprocesnu komunikaciju;
     \item Nije potrebno eksplicitno staranje o eventualnom sukobljavanju oko resursa;
     \item Niti jednog procesa dele resurse tog procesa;
-    \item Komunikacija između niti se najčešce odvija posredstvom deljenih resursa;
+    \item Komunikacija između niti se najčešće odvija posredstvom deljenih resursa;
     \item Neophodno je eksplicitno staranje o eventualnom sukobljavanjem oko resursa.
   \end{enumerate}
   
@@ -4639,7 +4693,7 @@ Primer: prozor - dekorateri.\\
           \end{itemize}
   \end{itemize}
   
-\section{Koje su najčesce greške pri pisanju konkurentnih programa? Objasniti.}
+\section{Koje su najčešće greške pri pisanju konkurentnih programa? Objasniti.}
   \begin{itemize}
     \item Previđanje problema deljenja podataka pri pisanju funkcija i klasa.
     \item Previđanje neprilagođenosti upotrebljivanih klasa (funkcija) konkurentnim okruženjima tj. 
