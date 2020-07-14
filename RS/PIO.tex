@@ -3281,7 +3281,7 @@ void TRACE(const char* s){
     \item komunikaciona (Communicational)
     \item proceduralna (Procedural)
     \item vremenska (Temporal)
-    \item logicka (Logical)
+    \item logička (Logical)
     \item koincidentna (Coincidental)
   \end{itemize}
  
@@ -3293,15 +3293,6 @@ void TRACE(const char* s){
   \textbf{Napomena:} Sledeći primer i primeri koju slede se odnose na koheziju klasa. Ove primere
   možemo posmatrati kao analogiju, gde klase igraju ulogu modula, a komponente igraja ulogu
   metoda.
-
-  \begin{lstlisting}
-    class Plane
-    {
-    public:
-        void takeoff();
-        void fly();
-        void land();
-    };\end{lstlisting}
 
 \section{Objasniti sekvencijalnu koheziju u kontekstu razvoja softvera.}
   Kohezija je \textbf{sekvencijalna kohezija} ako su elementi komponente projektovani 
@@ -3340,6 +3331,16 @@ void TRACE(const char* s){
         void mix();
         void bake();
     };\end{lstlisting}
+
+    Primer: Ovde može biti proceduralna ili komunikaciona kohezija.
+    \begin{lstlisting}
+      class Plane
+      {
+      public:
+          void takeoff();
+          void fly();
+          void land();
+      };\end{lstlisting}
 
 \section{Objasniti vremensku koheziju u kontekstu razvoja softvera.}
   Kohezija je \textbf{vremenska kohezija} ako su elementi komponente prikupljeni zajedno 
@@ -3459,7 +3460,7 @@ void TRACE(const char* s){
   \cite{gfg_coupling_and_cohesion}
   \begin{itemize}
     \item po sadržaju (Content Coupling)
-    \item preko zajednickih delova (Common Coupling)
+    \item preko zajedničkih delova (Common Coupling)
     \item spoljašnja spregnutost (External Coupling)
     \item preko kontrole (Control Coupling)
     \item preko markera (Stamp Coupling)
@@ -5634,7 +5635,6 @@ Primer: prozor - dekorateri.\\
   a ne kada predvidas da će biti potrebno!"
    
 \section{Kako se dele tehnike optimizacije? Navesti nekoliko primera.}
-  Dele se na: 
   \begin{itemize}
     \item \textbf{Opšte tehnike:} Tehnike koje mogu da se primene na sve ili bar veći broj 
           različitih programskih jezika ili problema i na 
@@ -5677,7 +5677,7 @@ Primer: prozor - dekorateri.\\
   petlje pravljenje jedne sa složenijim korakom (u slučaju jednostavnih koraka) može da doprinese i 
   do 35\% . \\
   
-  \textbf{,,Izmeštanje inavarijanti izvan petlje``:} Sve ono što može, izračunava se van petlje:\\
+  \textbf{,,Izmeštanje invarijanti izvan petlje``:} Sve ono što može, izračunava se van petlje:\\
   \indent for( int i=0; i<limit(a,b,c); i++ )... U tom slučaju koristiti pomoćne promenlive ili
   promeniti smer integracije. \\
 
@@ -5747,7 +5747,7 @@ Primer: prozor - dekorateri.\\
     \item Možemo da napišemo optimizovano a = (b << 5) + (b << 3)
   \end{itemize}
   Motiv: Pomeranje je brže nego mnozenje. Medutim, većina prevodilaca to može da uradi umesto nas.
-  Štaviše, to neće uraditi ako je procesor takav da to nije brze.\\
+  Štaviše, to neće uraditi ako je procesor takav da to nije brže.\\
   
   \textbf{Smanjivanje koda nije uvek i njegovo optimizovanje:} Dobar primer je upravo 
   eliminacija petlji. \\
