@@ -107,7 +107,7 @@
       ...
       delete n;
     }\end{lstlisting}
-    Napomena! Tip $int$ je primitivni tip, ne objekat. Ako bi promenljiva $a$ predstavljala objekat, 
+    \textbf{Napomena:} Tip $int$ je primitivni tip, ne objekat. Ako bi promenljiva $a$ predstavljala objekat, 
     onda bi redosled uništavanja bio sledeći: Prvo će se unistiti $n$, pa $k$, i na kraju $a$.
 
 \section{Da li je neka (koja?) narednih linija neispravna?}
@@ -356,7 +356,7 @@
 
 \section{Objasniti kako pristupi planiranju mogu dovesti do problema.}
     Loše planiranje je jedan od najčešćih uzroka neuspeha. Ima dva osnovna oblika:
-    nedovoljno planiranje i preterano planiranje.\\
+    \underline{nedovoljno planiranje} i \underline{preterano planiranje}.\\
     \indent \textbf{Nedovoljno planiranje} se obično ogleda kroz nedovoljnu analizu problema
     i/ili loše definisane zahteve i/ili neprecizno definisane zahteva. Najčešće posledice
     nedovoljnog planiranja su nesrazmerno veliki broj naknadnih korekcija zahteva,
@@ -626,7 +626,7 @@
 
 \section{Objasniti koncept nasleđivanja  i odgovarajuće odnose.}
   Nasleđivanje klase je ekvivalentno uvođenju jednosmerne parcijalno uređene 
-  relacije "jeste" između klasa.\\
+  relacije ,,jeste`` između klasa.\\
   \indent Klasa A ,,jeste`` klasa B akko svaki objekat klase A ima sve osobine koje imaju i objekti klase B.\\
   Ako A ,,jeste`` klasa B kaže se i da je:
   \begin{itemize}
@@ -741,15 +741,15 @@
   \end{figure} 
   \textbf{Kako razlikovati asocijaciju, agregaciju i kompoziciju?}\\
   \indent Agregacija i kompozicija su specijalni slučajevi asocijacije. 
-  Agregacija predstavlja odnos gde dete može da postoji bez roditelja (klase su čvorovi), 
-  a kompozicija predstavlja odnos gde dete ne može da postoji bez roditelja.
-  Ukoliko se veza između objekta može ostvariti na više načina, onda je to
+  \textbf{Agregacija} predstavlja odnos gde dete može da postoji bez roditelja (klase su čvorovi), 
+  a \textbf{kompozicija} predstavlja odnos gde dete ne može da postoji bez roditelja.
+  \indent Ukoliko se veza između objekta može ostvariti na više načina, onda je to
   samo asocijacija. Primer: Oba objekta imaju reference jedan na drugog 
   (uglavnom loša praksa).\\
   \noindent \textbf{Dodatni elementi dijagrama klase:}
   \begin{itemize}
-    \item \textbf{Ime odnosa:} Kratko objašnjena uloga veze objekata.
-    \item \textbf{Kardinalnost veze} Na liniji se takođe može naznačiti broj objekata koji
+    \item \textbf{Ime odnosa:} Kratka objašnjena uloga veze objekata.
+    \item \textbf{Kardinalnost veze:} Na liniji se takođe može naznačiti broj objekata koji
           mogu da učestvuju u vezi.
           Primer: Automobil sadrži četiri točkova. Kardinalnost ne mora 
           biti konstantna, tj. može se predstaviti i nekim skupom (najčešće intervalom).
@@ -819,7 +819,7 @@
     \item Dijagram slučajeva upotrebe (use case diagram) 
   \end{enumerate}
 
-    Dijagrami ponašanja se bave dinamičkom prirodom softverskog sitema. Oni
+    Dijagrami ponašanja se bave dinamičkom prirodom softverskog sistema. Oni
   opisuju ponašanje pojedinačnih objekata ili širih podsistema. Ponašanje se
   predstavlja u kontekstu toka vremena, u obliku razmene poruka, toka komunikacije
   ili toka promene stanja. \\
@@ -968,7 +968,7 @@
   \rightline{{\rm --- Cristopher Alexander}}\\
 
   Kristofer je ovde govorio za uzorke za zidanje zgrada, ali to što je rekao isto važi i za
-  uzorke objektno orijentisanog projektovanja. Softverska rešenja su izražena pomoću objeta i 
+  uzorke objektno orijentisanog projektovanja. Softverska rešenja su izražena pomoću objekta i 
   interfejsa umesto preko zidova i vrata, ali suština obe vrste uzoraka je rešavanje problema
   u svom kontektsu.\\
   \indent Uzorci za projektovanje su rešenja za opšte probleme sa kojim se razvijaoci često susreću.
@@ -1012,7 +1012,7 @@
 \section{Objasniti posledice, kao element uzoraka za projektovanje.}
   Obuhvataju rezultate i ocene primene uzorka.
   Često se ne pominju u opisima odluka o projektovanju, 
-  ali su veoma bitne za procenu alternetiva i za razumevanje prednosti 
+  ali su veoma bitne za procenu alternativa i za razumevanje prednosti 
   i nedostataka primene uzorka.
 
 \section{Navesti šta sve obuhvata opis jednog uzorka za projektovanje.}
@@ -1176,7 +1176,7 @@
 \section{Objasniti namenu uzoraka ponašanja.}
   Bave se algoritmima i raspodelama odgovornosti. Ne opisuju samo uzorke objekata ili klasa
   već i uzorke njihove međusobne komunikacije (observer). Opisuju prirodu složenog toka kontrole
-  koji se teško prati u vreme izvršavanja. Pažnja prelazi sa samog toka kontrole na način međusobnog
+  koji se teško prati u vreme izvršavanja. Pažnja i sa samog toka kontrole na način međusobnog
   povezivanja objekata. Dele se na \textbf{klasne uzorke ponašanja}, koji koriste nasleđivanje
   za distribuiranje ponašanja (šablonski metod, interpretator) i \textbf{objektne uzorke ponašanja},
   koji koriste sastavljanje objekata (umesto nasleđivanja).
@@ -1462,7 +1462,7 @@
 \section{Objasniti pretpostavku agilnog razvoja da su pojedinci i saradnja ispred procesa i alata.}
   Ima smisla staviti pojedince i saradnju ispred procesa i alata, jer su ljudi ti koji odgovaraju
   na zahteve posla i razvijaju procese. Ako procesi ili alati vode razvoj, onda su manje šanse 
-  da tim uspešno odgovori na promene ili ispošte zahtev klijenta. \\
+  da tim uspešno odgovori na promene ili ispoštuje zahtev klijenta. \\
   \indent Komunikacija
   je primer gde može da se predstavi razlika između vrednovanja pojedinaca naspram vrednovanja
   procesa. U slučaju vrednovanja pojedinaca, komunikacija dolazi prirodno kada je potrebna, a u 
@@ -1824,7 +1824,7 @@
   \end{enumerate}
 
 \section{Objasniti ulogu testova kao vida verifikacije softvera.}
-  Kolekcija testova omogućava progameru da proverava da li jedinica koda radi ispravno ili ne.
+  Kolekcija testova omogućava programeru da proverava da li jedinica koda radi ispravno ili ne.
   Za svaku funkciju programa postoje odgovarajući testovi koji proveravaju njenu ispravnost. 
   Testovi omogućavaju da se proveri da li je nešto možda loše izmenjeno. Takođe, pomažu da se rano
   prepoznaju greške na nivou koda ili na konceptualnom nivou. Testovi vrše dodatni pritisak
@@ -2749,6 +2749,7 @@ uzroke i posledice imaju?}
     \item sinhronizaciju niti;
     \item spoljašnje uređenje.
   \end{itemize} 
+  
   Kontrolisanje uslova često vodi do nemogućnosti ponavljanja greške. To znači da jedan od kontrolisanih
   uslova u nekom specifičnom stanju (različitom od kontrolisanog) proizvodi problem.\\
   \indent Nekada takve uslove nije moguće kontrolisati, ali je moguće učiniti proizvoljnijim. To
@@ -2837,7 +2838,7 @@ uzroke i posledice imaju?}
     \item \textbf{Izolovati ključni faktor:} ,,Koristiti pušku, a ne sačmaru``. Izmene koje se prave
           treba da budu izolovane i lokalizovane. Više izmena koje nisu lokalizovane značajno
           otežavaju uočavanje posledica. Ako je zaista uočen problem, onda je dovoljna jedna izmena,
-          a ako nije, onda je potrebno dalje posmatrati.
+          a u suprotnom je potrebno dalje posmatrati.
     \item \textbf{Biti uzdržan:} Kad se uoči da se nešto dešava, potrebno je zastati i
           dobro sačekati sa reagovanjem dok se svi simptomi prikažu, kako se ne bi doneo
           dvosmislen zaključak. U suprotnom je moguće da se radi o nagađanju i reagovanju
@@ -2896,7 +2897,7 @@ uzroke i posledice imaju?}
   \end{itemize}
 
 \section{Objasniti pravilo debagovanja ,,Zatražiti tuđe mišljenje``.}
-  \textbf{Ne ustručavati se da tražite tuđu pomoć! Saveti?}
+  \noindent \textbf{Ne ustručavati se da tražite tuđu pomoć! Saveti?}
   \begin{itemize}
     \item \textbf{Uključiti sveže snage:} Mnogo vremena provedeno uz neki sistem stvara implicitne
           podsvesne pretpostavke koje ometaju objektivno rasuđivanje. Neko sa strane ko nije 
@@ -2994,7 +2995,7 @@ int fact(int n)
 
   \textbf{Kada koristiti pretpostavke?} Pretpostavke mogu znatno da pogoršaju performanse
   sistema zbog čega se u verziji za isporučivanje izbacuju. Ponekad prilikom izvršavanja, kada program  
-  izbaci \textit{(throw)} izuzetak \textit{(exception)} kao posledica greške, nije uvek moguće uhvatiti \textit{(catch)} tj. 
+  izbaci \textit{(throw)} izuzetak \textit{(exception)} kao posledica greške, nije moguće uhvatiti \textit{(catch)} tj. 
   obraditi taj izuzetak. Tada jednostavno ne sme doći to takve greške. U tim slučajevima ima smisla 
   koristiti pretpostavke.\\
   \indent Izuzeci su za korisnike, a pretpostavke su za programere. Pretpostavke se koriste
@@ -3061,7 +3062,7 @@ void TRACE(const char* s){
   prosledimo komande debageru (primer: provera vrednosti promenljivih u toj tački).
 
 \section{Objasniti tehniku upotrebe debagera Praćenje vrednosti promenljivih.}
-  Kucanjem \textit{info variables} u GDB-u možemo da pratimo imena i vrednosti svih globalnih i 
+  Komandom \textit{info variables} u GDB-u možemo da pratimo imena i vrednosti svih globalnih i 
   statičkih promenljivih.
 
 \section{Objasniti tehniku upotrebe debagera Praćenje lokalnih promenljivih.}
@@ -3294,7 +3295,7 @@ void TRACE(const char* s){
     \item komunikaciona (Communicational)
     \item proceduralna (Procedural)
     \item vremenska (Temporal)
-    \item logicka (Logical)
+    \item logička (Logical)
     \item koincidentna (Coincidental)
   \end{itemize}
  
@@ -3306,15 +3307,6 @@ void TRACE(const char* s){
   \textbf{Napomena:} Sledeći primer i primeri koju slede se odnose na koheziju klasa. Ove primere
   možemo posmatrati kao analogiju, gde klase igraju ulogu modula, a komponente igraja ulogu
   metoda.
-
-  \begin{lstlisting}
-    class Plane
-    {
-    public:
-        void takeoff();
-        void fly();
-        void land();
-    };\end{lstlisting}
 
 \section{Objasniti sekvencijalnu koheziju u kontekstu razvoja softvera.}
   Kohezija je \textbf{sekvencijalna kohezija} ako su elementi komponente projektovani 
@@ -3353,6 +3345,16 @@ void TRACE(const char* s){
         void mix();
         void bake();
     };\end{lstlisting}
+
+    Primer: Ovde može biti proceduralna ili komunikaciona kohezija.
+    \begin{lstlisting}
+      class Plane
+      {
+      public:
+          void takeoff();
+          void fly();
+          void land();
+      };\end{lstlisting}
 
 \section{Objasniti vremensku koheziju u kontekstu razvoja softvera.}
   Kohezija je \textbf{vremenska kohezija} ako su elementi komponente prikupljeni zajedno 
@@ -3472,7 +3474,7 @@ void TRACE(const char* s){
   \cite{gfg_coupling_and_cohesion}
   \begin{itemize}
     \item po sadržaju (Content Coupling)
-    \item preko zajednickih delova (Common Coupling)
+    \item preko zajedničkih delova (Common Coupling)
     \item spoljašnja spregnutost (External Coupling)
     \item preko kontrole (Control Coupling)
     \item preko markera (Stamp Coupling)
@@ -3831,7 +3833,7 @@ Primer: prozor - dekorateri.\\
     \item Ako je nizak nivo kohezije u klasi, to znači da klasa nije dobro podeljena:
           \begin{itemize}
             \item Ako postoji kohezija između nekih elemenata klase, ali ne svih, ili
-            \item ako se prepoznaje više različitih skupove elemenata klase unutar kojih postoji snažna kohezija.
+            \item Ako se prepoznaje više različitih skupova elemenata klase unutar kojih postoji snažna kohezija.
           \end{itemize}
     \item Moguće je da postoji problem prepoznavanja odgovornosti klase. 
     \item Klasu je možda potrebno podeliti na više klasa.
@@ -3903,13 +3905,13 @@ Primer: prozor - dekorateri.\\
 
 \section{Navesti i objasniti slojeve toka događaja kod arhitektura zasnovanih na događajima.}
   \begin{itemize}
-    \item \textbf{Generator događaja:} objekat koji prepoznaje da je nastupio uslov koji 
+    \item \textbf{Generator događaja:} Objekat koji prepoznaje da je nastupio uslov koji 
           predstavlja neki definisan dogadaj;
-    \item \textbf{Mašina za obradu događaja:} mesto na kome se prepoznaje nastali događaj 
+    \item \textbf{Mašina za obradu događaja:} Mesto na kome se prepoznaje nastali događaj 
           i odabire i pokreće odgovarajuća akcija (ili niz akcija);
-    \item \textbf{Kanal događaja:} mehanizam putem koga se događaj prosleđuje od generatora 
+    \item \textbf{Kanal događaja:} Mehanizam putem koga se događaj prosleđuje od generatora 
           do mašine za obradu događaja;
-    \item \textbf{Niz događaja:} upravljanih aktivnosti - mesto ispoljavanja događaja.
+    \item \textbf{Niz događaja:} Upravljanih aktivnosti - mesto ispoljavanja događaja.
   \end{itemize}
 
 \section{Objasniti osnovne koncepte primene arhitekture zasnovane na događajima u okviru biblioteke QT.}
@@ -4084,7 +4086,7 @@ Primer: prozor - dekorateri.\\
   \end{itemize}
   
   \textbf{Promena konteksta (eng. context switch)} je promena stanja procesora koja je 
-  neophodna u slučaju kada procesor sa izvršavanja koda jednog procesa prelazi 
+  neophodna u slučaju kada procesor prelazi sa izvršavanja koda jednog procesa  
   na izvršavanje koda drugog procesa. Stanje prethodno izvršavanog procesa zapisuje u memoriji. 
   Stanje narednog procesa koji će se izvršavati se čita iz memorije.\\
   \textbf{Cena procesa:}
@@ -4516,9 +4518,9 @@ Primer: prozor - dekorateri.\\
   Slično klasi QMutexLocker, služi da pojednostavi rad sa katancima. 
   Dobar način da se preduprede greške sa propuštanjem otključavanja.
   
-\section{Šta je sinhornizacija?	Šta se sve može sinhronizovati u konkurentnim programima?}
+\section{Šta je sinhronizacija?	Šta se sve može sinhronizovati u konkurentnim programima?}
   Da bi se jedinice izvršavanja sinhrornizovale, one moraju da koriste neke zajedničke 
-  resurse za obaveštenje. U slučaju niti, sinhornizacija se može izvoditi putem deljenih resursa. 
+  resurse za obaveštenje. U slučaju niti, sinhronizacija se može izvoditi putem deljenih resursa. 
   Najvažnije je voditi računa o atomičnosti operacija.
   
 \section{Šta su semafori?}
@@ -5647,7 +5649,6 @@ Primer: prozor - dekorateri.\\
   a ne kada predvidas da će biti potrebno!"
    
 \section{Kako se dele tehnike optimizacije? Navesti nekoliko primera.}
-  Dele se na: 
   \begin{itemize}
     \item \textbf{Opšte tehnike:} Tehnike koje mogu da se primene na sve ili bar veći broj 
           različitih programskih jezika ili problema i na 
@@ -5690,7 +5691,7 @@ Primer: prozor - dekorateri.\\
   petlje pravljenje jedne sa složenijim korakom (u slučaju jednostavnih koraka) može da doprinese i 
   do 35\% . \\
   
-  \textbf{,,Izmeštanje inavarijanti izvan petlje``:} Sve ono što može, izračunava se van petlje:\\
+  \textbf{,,Izmeštanje invarijanti izvan petlje``:} Sve ono što može, izračunava se van petlje:\\
   \indent for( int i=0; i<limit(a,b,c); i++ )... U tom slučaju koristiti pomoćne promenlive ili
   promeniti smer integracije. \\
 
@@ -5760,7 +5761,7 @@ Primer: prozor - dekorateri.\\
     \item Možemo da napišemo optimizovano a = (b << 5) + (b << 3)
   \end{itemize}
   Motiv: Pomeranje je brže nego mnozenje. Medutim, većina prevodilaca to može da uradi umesto nas.
-  Štaviše, to neće uraditi ako je procesor takav da to nije brze.\\
+  Štaviše, to neće uraditi ako je procesor takav da to nije brže.\\
   
   \textbf{Smanjivanje koda nije uvek i njegovo optimizovanje:} Dobar primer je upravo 
   eliminacija petlji. \\
