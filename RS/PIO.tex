@@ -490,11 +490,12 @@
   \textbf{Rizik:}
   \begin{itemize}
     \item Prototipovi obično odražavaju funkcionalne aspekte i elemente korisničkog interfejsa,   
-          ali ne i unutrašnju strukturu softvera;
-    \item Posledica je da su samo delimično odgovarajući objektno orijentisanim metodologijama;
+          ali ne i unutrašnju strukturu softvera. Zbog toga su samo delimično 
+          odgovarajući objektno orijentisanim metodologijama;
     \item Nedovoljno široko napravljen prototip i nedovoljno široko razmatranje prototipa mogu da 
           prikriju nedostatke u drugim aspektima IS;
-    \item Previše pažnje posvećene prototipu preti da ,,naduva`` fazu njegove izrade.
+    \item Previše pažnje posvećene prototipu preti da ,,naduva`` fazu njegove izrade, kao i da skrene
+          tok razvoja na prototip umesto na sistem kao celinu.                    
   \end{itemize}
 
 \section{U kojim okolnostima su nastale objektno orijentisane razvojne metodologije?}
@@ -533,6 +534,17 @@
 
 \section{Šta je objekat? Objasniti svojim rečima i navesti jednu od poznatih definicija.}
   ,,Objekti imaju stanje, ponašanje i identitet`` (Booch, 1994)\\\\
+
+  Objekat je apstrahcija nečeg konkretnog u domenu problema.
+  Ima stanje, ponašanje i znanje (ne mora svo troje). Ima svoj životni
+  ciklus:
+    \begin{itemize}
+      \item Nastajanje
+      \item Postojanje
+      \item Nestajanje
+    \end{itemize}
+    
+
   Primer:
   \begin{lstlisting}
   class Point {
@@ -743,7 +755,7 @@
           biti konstantna, tj. može se predstaviti i nekim skupom (najčešće intervalom).
     \item \textbf{Komentari:} Tekstualna dokumentacija povezana sa nekim objektom dijagrama.
     \item \textbf{Stereotip:} Obično se navodi iznad imena klase u obliku ,,<<naziv>>``. 
-          Govori o tipu objekta. Primeri
+          Govori o nekoj prirodi ili nameni klase. Primeri
           \begin{itemize}
             \item \textit{abstract} - apstraktna klasa;
             \item \textit{entity} - trajni podatak;
@@ -761,7 +773,9 @@
 \section{Koja je uloga i šta su osnovni elementi dijagrama komponenti?}
   Dijagram komponenti razbija sistem koji se razvija na neke celine po njihovim funkcionalnostima.
   Ima dosta sličnosti kao dijagram klase po odnosima elemenata. Ovaj dijagram možemo posmatrati
-  kao apstraktniji nivo dijagrama klase. Svaki element ima naziv i interfejs.
+  kao apstraktniji nivo dijagrama klase. Svaki element ima naziv i interfejs. Trebalo bi da se
+  povezuju preko interfejsa. Ako komponenta zavisi od druge onda se može izostaviti interfejs
+  i samo ih povezati isprekidanom strelicom.
 
 \section{Koja je uloga i šta su osnovni elementi dijagrama objekata?}
   Ilustruje elemente dinamičkog modela tj. predstavlja objekte u jednom trenutku (konkretna situacija). 
