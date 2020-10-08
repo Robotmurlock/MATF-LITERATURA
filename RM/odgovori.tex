@@ -65,6 +65,12 @@
 
 \maketitle
 
+\abstract
+
+Ova skripta predstavlja kombinovan materijal sa slajdova profesora Kartelja i knjige Tanenbauma 
+tj. više je opširna od slajdova, a manje od knjige. Preporučio bih kolegama da svakako pročitaju
+knjigu ili odgledaju video prezentacije profesora Tanenbauma. 
+
 \tableofcontents
 
 \newpage
@@ -135,7 +141,7 @@
         \end{itemize} 
 
 \section{Protokoli i slojevi}
-    Šta sve treba mreža da radi za korisnike?
+    \noindent \textbf{Šta sve treba mreža da radi za korisnike?}
     \begin{itemize}
         \item Pravi i prekida konekciju;
         \item Pronalazi putanju za transfer podataka;
@@ -535,7 +541,7 @@
             \item \textbf{NRZI (Non-Return to Zero Inverted):} Kodiramo 1 kao prelaz 
                   ($1 \rightarrow 0, 0 \rightarrow 1$), 
                   a 0 kao neprelaz ($0 \rightarrow 0, 1 \rightarrow 1$). 
-                  standard za USB koristi ovakav način kodiranja. Ovom metodom se samo rešava problem uzastopnih
+                  Standard za USB koristi ovakav način kodiranja. Ovom metodom se samo rešava problem uzastopnih
                   jedinica, ali ne i uzastopnih nula.
             \item \textbf{4B/5B: } Svaki niz četiri bita se preslikava u niz 5 bitova. Preslikavanje
                   se bira tako da nikad nema više od tri uzastopne nule. Ovim se koristi 25\% više
@@ -1443,7 +1449,7 @@ void protocol()
     \indent Mane protokola sa redosledom je složenost (može da se izgubi token ili slično). Takođe je
     relativno visok dodatni trošak pri malom opterećenju. \\
     \indent U praksi se protokoli sa redosledom obično isprobavaju kao poboljšanje. Međutim, protokoli
-    sa slučajnošću se obično teško nadmašuju (jedostavni i dovoljno dobri, skalabilni). 
+    sa slučajnošću se obično teško nadmašuju (jednostavni i dovoljno dobri, skalabilni). 
 
     \subsection{Protokol ,,Token Ring``}
         Koristi se topologija mreže za definisanje prioriteta po kojem čvorovi mogu da šalju podatke.
@@ -2225,7 +2231,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     isto na nivou izvora i cilja. Opterećenje se i dalje balansira na isti način, a eliminiše
     se upotreba različitih putanja za pakete iz istih logičkih celina (datoteka, video).
 
-\section{Hijearhijsto nasleđivanje}
+\section{Hijearhijsko nasleđivanje}
     Rutiranje po svakom pojedinačnom čvoru se ne skalira dobro. Bolje rešenje je da se čvorovi
     grupišu u regione, a potom u okviru regiona se vrši specifičnije rutiranje. \\
     \indent Nema smisla praviti unos u tabeli prosleđivanja za svaki ruter na svetu:
@@ -2482,7 +2488,7 @@ mrežnom sloju, objašnjenja i njihov uporedni odnos.}
     na sloju veze. Glavna razlika je u tome što se ovde komunikacije odnosi na komunikaciju
     dva krajnja čvora preko cele putanje umesto na komunikaciju dva susedna čvora preko jedne veze.\\
     \indent Povećana pouzdanost na nižim nivoima doprinosi efikasnost na višim nivoima, ali nije
-    nužno imati imati te mehanizme na nižim nivoima. U ekstremnom slučaju bi moglo sve da radi
+    nužno imati te mehanizme na nižim nivoima. U ekstremnom slučaju bi moglo sve da radi
     na transportnom sloju, ali cena retransmisija na transportnom sloju je skuplja nego
     na nivou sloja veze. \\
     \indent Postoji dosta varijacija ovih protokola u zavisnosti od baferisanja, potvrđivanja
